@@ -39,15 +39,12 @@ ThoughtTrance offers several key features to enhance your productivity:
 
 ## Contributing
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
 To contribute to ThoughtTrance, please follow these steps:
 
-1. Fork the repository.
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the Branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
+1. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+2. Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
+3. Push to the Branch (`git push origin feature/AmazingFeature`).
+4. Open a Pull Request.
 
 ## License
 
