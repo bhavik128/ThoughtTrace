@@ -17,7 +17,7 @@ Introduction
 To get started with ThoughtTrance, clone this repository and import it into **Xcode**:
 
 ```bash
-git clone https://github.com/bhavik128/ThoughtTrace
+git clone https://github.com/bhavik128/ThoughtTrace.git
 ```
 
 ## Setup
