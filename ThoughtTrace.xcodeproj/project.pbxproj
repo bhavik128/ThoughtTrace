@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0640562BE7BCBF001EE1EE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2E0640552BE7BCBF001EE1EE /* FirebaseAuth */; };
+		2E0640582BE7BCF9001EE1EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */; };
 		2E6F61E72BE25D050022ACE0 /* ThoughtTraceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F61E62BE25D050022ACE0 /* ThoughtTraceApp.swift */; };
 		2E6F61E92BE25D060022ACE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F61E82BE25D060022ACE0 /* ContentView.swift */; };
 		2E6F61EB2BE25D070022ACE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F61EA2BE25D070022ACE0 /* Assets.xcassets */; };
@@ -16,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E6F61E32BE25D050022ACE0 /* ThoughtTrace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThoughtTrace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6F61E62BE25D050022ACE0 /* ThoughtTraceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtTraceApp.swift; sourceTree = "<group>"; };
 		2E6F61E82BE25D060022ACE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -30,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E0640562BE7BCBF001EE1EE /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +64,7 @@
 				2E6F61E62BE25D050022ACE0 /* ThoughtTraceApp.swift */,
 				2E6F61E82BE25D060022ACE0 /* ContentView.swift */,
 				2E6F61EA2BE25D070022ACE0 /* Assets.xcassets */,
+				2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */,
 				2E6F61EC2BE25D070022ACE0 /* Preview Content */,
 			);
 			path = ThoughtTrace;
@@ -89,6 +94,9 @@
 			dependencies = (
 			);
 			name = ThoughtTrace;
+			packageProductDependencies = (
+				2E0640552BE7BCBF001EE1EE /* FirebaseAuth */,
+			);
 			productName = ThoughtTrace;
 			productReference = 2E6F61E32BE25D050022ACE0 /* ThoughtTrace.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 2E6F61DA2BE25D050022ACE0;
+			packageReferences = (
+				2E0640542BE7BCBF001EE1EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 2E6F61E42BE25D050022ACE0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -133,6 +144,7 @@
 			files = (
 				2E6F61F72BE25DBF0022ACE0 /* .gitignore in Resources */,
 				2E6F61F52BE25D8C0022ACE0 /* README.md in Resources */,
+				2E0640582BE7BCF9001EE1EE /* GoogleService-Info.plist in Resources */,
 				2E6F61EE2BE25D070022ACE0 /* Preview Assets.xcassets in Resources */,
 				2E6F61EB2BE25D070022ACE0 /* Assets.xcassets in Resources */,
 			);
@@ -356,6 +368,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2E0640542BE7BCBF001EE1EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.25.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2E0640552BE7BCBF001EE1EE /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E0640542BE7BCBF001EE1EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2E6F61DB2BE25D050022ACE0 /* Project object */;
 }
