@@ -40,6 +40,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E0640592BE7BF22001EE1EE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F61E82BE25D060022ACE0 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2E06405A2BE7BF2C001EE1EE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		2E06405B2BE7BF38001EE1EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2E06405C2BE7BF40001EE1EE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F61E62BE25D050022ACE0 /* ThoughtTraceApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		2E6F61DA2BE25D050022ACE0 = {
 			isa = PBXGroup;
 			children = (
@@ -61,8 +91,10 @@
 		2E6F61E52BE25D050022ACE0 /* ThoughtTrace */ = {
 			isa = PBXGroup;
 			children = (
-				2E6F61E62BE25D050022ACE0 /* ThoughtTraceApp.swift */,
-				2E6F61E82BE25D060022ACE0 /* ContentView.swift */,
+				2E06405C2BE7BF40001EE1EE /* App */,
+				2E06405B2BE7BF38001EE1EE /* Models */,
+				2E06405A2BE7BF2C001EE1EE /* ViewModels */,
+				2E0640592BE7BF22001EE1EE /* Views */,
 				2E6F61EA2BE25D070022ACE0 /* Assets.xcassets */,
 				2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */,
 				2E6F61EC2BE25D070022ACE0 /* Preview Content */,
