@@ -23,9 +23,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct ThoughtTraceApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
+    @StateObject var viewModel = AuthViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(viewModel)
         }
     }
 }
