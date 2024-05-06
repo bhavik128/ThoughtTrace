@@ -8,6 +8,10 @@
 import FirebaseAuth
 import Foundation
 
+protocol AuthFormProtocol {
+    var isFormValid: Bool { get }
+}
+
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var isAuthenticated: Bool = false

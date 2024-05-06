@@ -13,7 +13,7 @@ struct InputFieldView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(viewModel.title)
-                .foregroundColor(.gray)
+                .foregroundColor(Color(.darkGray))
                 .fontWeight(.medium)
                 .font(.subheadline)
 
