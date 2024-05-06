@@ -2,12 +2,11 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    @State private var topTasks = ["Task 1", "Task 2", "Task 3"] 
+    @State private var topTasks = ["Task 1", "Task 2", "Task 3"] //list to be replaced with actual tasks
 
     var body: some View {
-//        Group {
-//            if authViewModel.isAuthenticated {
-
+        Group {
+            if authViewModel.isAuthenticated {
         
                 VStack {
                     Text("ThoughtTrace")
@@ -88,10 +87,10 @@ struct ContentView: View {
                     }
                 }
                 .padding()
-//            } else {
-//                SignInView()
-//            }
-//        }
+            } else {
+                SignInView()
+            }
+        }
     }
 }
 
