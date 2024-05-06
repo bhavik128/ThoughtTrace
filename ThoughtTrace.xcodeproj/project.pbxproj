@@ -18,6 +18,8 @@
 		2E6F61EE2BE25D070022ACE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F61ED2BE25D070022ACE0 /* Preview Assets.xcassets */; };
 		2E6F61F52BE25D8C0022ACE0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F61F42BE25D8C0022ACE0 /* README.md */; };
 		2E6F61F72BE25DBF0022ACE0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F61F62BE25DBF0022ACE0 /* .gitignore */; };
+		2EBB62C92BE877EB0003A7DF /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB62C82BE877EB0003A7DF /* SignInView.swift */; };
+		2EBB62CB2BE882220003A7DF /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBB62CA2BE882220003A7DF /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		2E6F61ED2BE25D070022ACE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2E6F61F42BE25D8C0022ACE0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2E6F61F62BE25DBF0022ACE0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2EBB62C82BE877EB0003A7DF /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		2EBB62CA2BE882220003A7DF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 			children = (
 				2E6F61E82BE25D060022ACE0 /* ContentView.swift */,
 				2E06405D2BE7C13A001EE1EE /* InputFieldView.swift */,
+				2EBB62C82BE877EB0003A7DF /* SignInView.swift */,
+				2EBB62CA2BE882220003A7DF /* SignUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,8 +204,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EBB62C92BE877EB0003A7DF /* SignInView.swift in Sources */,
 				2E0640642BE7CE38001EE1EE /* AuthViewModel.swift in Sources */,
 				2E0640622BE7CB66001EE1EE /* InputFieldViewModel.swift in Sources */,
+				2EBB62CB2BE882220003A7DF /* SignUpView.swift in Sources */,
 				2E6F61E92BE25D060022ACE0 /* ContentView.swift in Sources */,
 				2E6F61E72BE25D050022ACE0 /* ThoughtTraceApp.swift in Sources */,
 				2E06405E2BE7C13A001EE1EE /* InputFieldView.swift in Sources */,
