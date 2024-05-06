@@ -8,7 +8,6 @@
 import FirebaseAuth
 import Foundation
 
-@MainActor
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var isAuthenticated: Bool = false
