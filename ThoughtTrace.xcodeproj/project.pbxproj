@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05CD7A3B2BE957BC00929BE7 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD7A3A2BE957BC00929BE7 /* AddTaskView.swift */; };
+		05CD7A3E2BE95D2300929BE7 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD7A3D2BE95D2300929BE7 /* TaskListView.swift */; };
+		05CD7A402BE961F600929BE7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD7A3F2BE961F600929BE7 /* CalendarView.swift */; };
 		2E0640562BE7BCBF001EE1EE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2E0640552BE7BCBF001EE1EE /* FirebaseAuth */; };
 		2E0640582BE7BCF9001EE1EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */; };
 		2E06405E2BE7C13A001EE1EE /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06405D2BE7C13A001EE1EE /* InputFieldView.swift */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05CD7A3A2BE957BC00929BE7 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		05CD7A3D2BE95D2300929BE7 /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		05CD7A3F2BE961F600929BE7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E06405D2BE7C13A001EE1EE /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		2E0640612BE7CB66001EE1EE /* InputFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldViewModel.swift; sourceTree = "<group>"; };
@@ -61,6 +67,9 @@
 				2E06405D2BE7C13A001EE1EE /* InputFieldView.swift */,
 				2EBB62C82BE877EB0003A7DF /* SignInView.swift */,
 				2EBB62CA2BE882220003A7DF /* SignUpView.swift */,
+				05CD7A3A2BE957BC00929BE7 /* AddTaskView.swift */,
+				05CD7A3D2BE95D2300929BE7 /* TaskListView.swift */,
+				05CD7A3F2BE961F600929BE7 /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -211,9 +220,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05CD7A402BE961F600929BE7 /* CalendarView.swift in Sources */,
 				2EBB62C92BE877EB0003A7DF /* SignInView.swift in Sources */,
 				2E0640642BE7CE38001EE1EE /* AuthViewModel.swift in Sources */,
+				05CD7A3E2BE95D2300929BE7 /* TaskListView.swift in Sources */,
 				2E0640622BE7CB66001EE1EE /* InputFieldViewModel.swift in Sources */,
+				05CD7A3B2BE957BC00929BE7 /* AddTaskView.swift in Sources */,
 				2EBB62CB2BE882220003A7DF /* SignUpView.swift in Sources */,
 				2E6F61E92BE25D060022ACE0 /* ContentView.swift in Sources */,
 				2E6F61E72BE25D050022ACE0 /* ThoughtTraceApp.swift in Sources */,
@@ -361,6 +373,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -392,6 +405,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
