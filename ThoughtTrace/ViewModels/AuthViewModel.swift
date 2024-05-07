@@ -12,9 +12,12 @@ protocol AuthFormProtocol {
     var isFormValid: Bool { get }
 }
 
+@MainActor
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var isAuthenticated: Bool = false
+    @Published var showToast: Bool = false
+    @Published var authErrorMessage: String = ""
 
     private var handle: AuthStateDidChangeListenerHandle?
 
@@ -35,7 +38,20 @@ class AuthViewModel: ObservableObject {
         do {
             try await Auth.auth().signIn(withEmail: email, password: password)
         } catch {
-            print("SignIn failed: \(error.localizedDescription)")
+            if let error = error as NSError? {
+                let code = AuthErrorCode.Code(rawValue: error.code)
+
+                switch code {
+                case .invalidEmail:
+                    authErrorMessage = "Email invalid, Please try again"
+                case .invalidCredential:
+                    authErrorMessage = "Email or password incorrect, Please try again"
+                default:
+                    authErrorMessage = "Something went wrong, Please try again"
+                }
+
+                showToast = true
+            }
         }
     }
 
@@ -43,7 +59,20 @@ class AuthViewModel: ObservableObject {
         do {
             try await Auth.auth().createUser(withEmail: email, password: password)
         } catch {
-            print("SignUp failed: \(error.localizedDescription)")
+            if let error = error as NSError? {
+                let code = AuthErrorCode.Code(rawValue: error.code)
+
+                switch code {
+                case .invalidEmail:
+                    authErrorMessage = "Email invalid, Please try again"
+                case .emailAlreadyInUse:
+                    authErrorMessage = "Email already in use"
+                default:
+                    authErrorMessage = "Something went wrong, Please try again"
+                }
+
+                showToast = true
+            }
         }
     }
 
@@ -53,5 +82,10 @@ class AuthViewModel: ObservableObject {
         } catch {
             print("SignOut failed: \(error.localizedDescription)")
         }
+    }
+
+    func resetError() {
+        showToast = false
+        authErrorMessage = ""
     }
 }
