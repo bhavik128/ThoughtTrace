@@ -78,6 +78,8 @@
 		2E06405B2BE7BF38001EE1EE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				05CE9A1F2BEBB9E000CD911F /* TaskModel.swift */,
+				05CE9A252BEBBF3700CD911F /* QuoteModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
