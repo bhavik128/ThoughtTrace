@@ -2,7 +2,7 @@
 //  TaskModel.swift
 //  ThoughtTrace
 //
-//  Created by Zareen Sharar Cynthia on 8/5/2024.
+//  Created by Ky Staal on 9/5/2024.
 //
 
 import Foundation
@@ -16,16 +16,20 @@ enum TaskStatus: String, Codable {
 struct Task: Identifiable, Codable {
     var id: UUID = UUID()
     var title: String
+    var description: String
     var dateCreated: Date
     var dueDate: Date
-    var comment: String?
+    var priority: Int
     var status: TaskStatus
+    var comments: [String]
 
-    init(title: String, dateCreated: Date = Date(), dueDate: Date, comment: String? = nil, status: TaskStatus = .toDo) {
+    init(title: String, description: String, dateCreated: Date = Date(), dueDate: Date, status: TaskStatus = .toDo, priority: Int = 1) {
         self.title = title
+        self.description = description
         self.dateCreated = dateCreated
         self.dueDate = dueDate
-        self.comment = comment
         self.status = status
+        self.priority = priority
+        self.comments = []
     }
 }
