@@ -2,7 +2,19 @@
 //  TaskViewModel.swift
 //  ThoughtTrace
 //
-//  Created by Zareen Sharar Cynthia on 8/5/2024.
+//  Created by Ky Staal Cynthia on 9/5/2024.
 //
 
 import Foundation
+
+class TaskViewModel : ObservableObject {
+    @Published var task: Task
+    
+    init(task: Task) {
+        self.task = task
+    }
+    
+    func addComment(_ comment: String) {
+        task.comments.append(comment)
+    }
+}

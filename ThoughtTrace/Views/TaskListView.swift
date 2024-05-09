@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct TaskListView: View {
+    
+    @State var currentTask: Task?
+    @ObservedObject var viewModel: TaskListViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(viewModel.tasks) {
+            task in Text(task.title)
+                .onTapGesture {
+                    currentTask = task
+                }
+        }
+        .sheet(item: $currentTask) { task in
+            TaskDetailView(task: task)
+        }
     }
 }
 
 #Preview {
-    TaskListView()
+    TaskListView(viewModel: TaskListViewModel())
 }
