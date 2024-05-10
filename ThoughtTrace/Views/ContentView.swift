@@ -2,8 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    @StateObject private var quoteViewModel = QuoteViewModel()
-    @State private var topTasks = ["Task 1", "Task 2", "Task 3", "Task 4", "Task 5", "Task 6", "Task 7", "Task 8", "Task 9"] //list to be replaced with actual tasks
+    @State private var topTasks = ["Task 1", "Task 2", "Task 3"] //list to be replaced with actual tasks
 
     var body: some View {
         Group {
@@ -22,17 +21,13 @@ struct ContentView: View {
                             .foregroundColor(.indigo)
                             .bold()
                         
-                        ScrollView{
-                            LazyVStack{
-                                ForEach(topTasks, id: \.self) { task in
-                                    Text(task)
-                                        .padding(.vertical, 5)
-                                        .frame(minWidth: 200)
-                                        .background(.indigo)
-                                        .cornerRadius(10)
-                                        .foregroundColor(.white)
-                                }
-                            }
+                        ForEach(topTasks, id: \.self) { task in
+                            Text(task)
+                                .padding(.vertical, 5)
+                                .frame(minWidth: 200)
+                                .background(.indigo)
+                                .cornerRadius(10)
+                                .foregroundColor(.white)
                         }
                         
                         NavigationLink(destination: TaskListView()) {
@@ -44,7 +39,6 @@ struct ContentView: View {
                     }
                     .padding()
                     .frame(width: 300)
-                    .frame(height: 250)
                     .background(.indigo.opacity(0.3))
                     .cornerRadius(25)
                     Spacer()
@@ -85,35 +79,6 @@ struct ContentView: View {
                     }
                     .padding()
                     Spacer()
-                    
-                    VStack {
-                        if let quote = quoteViewModel.quote {
-                            Text("\"\(quote.q)\"")
-                                .italic()
-                                .padding()
-                            Text("- \(quote.a)")
-                                .font(.caption)
-                                .padding([.bottom, .leading, .trailing])
-                        } else if let errorMessage = quoteViewModel.errorMessage {
-                            Text(errorMessage)
-                                .foregroundColor(.red)
-                        }
-
-                        if quoteViewModel.isLoading {
-                            ProgressView()
-                        }
-
-                        Button("Regenerate Quote") {
-                            quoteViewModel.fetchRandomQuote()
-                        }
-                        .padding(8)
-                        .font(.system(size: 12))
-                        .frame(width: 150, height: 30)
-                        .background(Color.indigo)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                    }
-                    .padding()
                     
                     Button {
                         authViewModel.signOut()
