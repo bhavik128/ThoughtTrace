@@ -11,23 +11,35 @@ struct ContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
 
     var body: some View {
-        Group {
-            if authViewModel.isAuthenticated {
-                VStack {
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Text("Hello, world!")
+        NavigationStack {
+            Group {
+                if authViewModel.isAuthenticated {
+                    VStack {
+                        Image(systemName: "globe")
+                            .imageScale(.large)
+                            .foregroundStyle(.tint)
+                        Text("Hello, world!")
 
-                    Button {
-                        authViewModel.signOut()
-                    } label: {
-                        Text("Signout")
+                        Button {
+                            authViewModel.signOut()
+                        } label: {
+                            Text("Signout")
+                        }
                     }
+                    .padding()
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            NavigationLink {
+                                SettingsView()
+                            } label: {
+                                Image(systemName: "gearshape.fill")
+                                    .imageScale(.large)
+                            }
+                        }
+                    }
+                } else {
+                    SignInView()
                 }
-                .padding()
-            } else {
-                SignInView()
             }
         }
     }
