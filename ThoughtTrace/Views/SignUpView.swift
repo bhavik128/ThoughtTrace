@@ -49,6 +49,7 @@ struct SignUpView: View {
             Button {
                 Task {
                     await authViewModel.signUp(
+                        fullname: nameFieldViewModel.text,
                         email: emailFieldViewModel.text,
                         password: passwordFieldViewModel.text
                     )

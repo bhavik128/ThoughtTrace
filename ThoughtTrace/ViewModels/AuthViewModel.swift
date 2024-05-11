@@ -6,6 +6,7 @@
 //
 
 import FirebaseAuth
+import FirebaseFirestore
 import Foundation
 
 protocol AuthFormProtocol {
@@ -15,6 +16,7 @@ protocol AuthFormProtocol {
 @MainActor
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: UserModel?
     @Published var isAuthenticated: Bool = false
     @Published var showToast: Bool = false
     @Published var authErrorMessage: String = ""
@@ -55,9 +57,12 @@ class AuthViewModel: ObservableObject {
         }
     }
 
-    func signUp(email: String, password: String) async {
+    func signUp(fullname: String, email: String, password: String) async {
         do {
             try await Auth.auth().createUser(withEmail: email, password: password)
+
+            try Firestore.firestore().collection("users").addDocument(
+                from: UserModel(fullname: fullname, email: email))
         } catch {
             if let error = error as NSError? {
                 let code = AuthErrorCode.Code(rawValue: error.code)
