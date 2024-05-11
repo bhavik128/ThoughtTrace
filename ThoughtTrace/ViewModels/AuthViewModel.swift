@@ -6,6 +6,7 @@
 //
 
 import FirebaseAuth
+import FirebaseFirestore
 import Foundation
 
 protocol AuthFormProtocol {
@@ -15,6 +16,7 @@ protocol AuthFormProtocol {
 @MainActor
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: UserModel?
     @Published var isAuthenticated: Bool = false
     @Published var showToast: Bool = false
     @Published var authErrorMessage: String = ""
@@ -25,6 +27,10 @@ class AuthViewModel: ObservableObject {
         handle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
             self?.userSession = user
             self?.isAuthenticated = (user != nil)
+
+            Task {
+                await self?.fetchUser()
+            }
         }
     }
 
@@ -55,9 +61,11 @@ class AuthViewModel: ObservableObject {
         }
     }
 
-    func signUp(email: String, password: String) async {
+    func signUp(fullname: String, email: String, password: String) async {
         do {
-            try await Auth.auth().createUser(withEmail: email, password: password)
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            saveUser(user: UserModel(id: result.user.uid, fullname: fullname, email: email))
+            await fetchUser()
         } catch {
             if let error = error as NSError? {
                 let code = AuthErrorCode.Code(rawValue: error.code)
@@ -73,6 +81,25 @@ class AuthViewModel: ObservableObject {
 
                 showToast = true
             }
+        }
+    }
+
+    private func saveUser(user: UserModel) {
+        try? Firestore.firestore().collection("users").document(user.id).setData(from: user)
+    }
+
+    private func fetchUser() async {
+        if let userId = userSession?.uid {
+            do {
+                let user = try await Firestore.firestore().collection("users").document(userId).getDocument(
+                    as: UserModel.self)
+                currentUser = user
+            } catch {
+                print("Error fetching user from db", error)
+                currentUser = nil
+            }
+        } else {
+            currentUser = nil
         }
     }
 
