@@ -5,11 +5,10 @@
 //  Created by Bhavik Chotalia on 11/5/2024.
 //
 
-import FirebaseFirestore
 import Foundation
 
 struct UserModel: Identifiable, Codable {
-    @DocumentID var id: String?
+    var id: String
     var fullname: String
     var email: String
 

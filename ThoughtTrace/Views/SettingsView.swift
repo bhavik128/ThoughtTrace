@@ -15,7 +15,7 @@ struct SettingsView: View {
             List {
                 Section {
                     HStack(spacing: 12) {
-                        Text("JD")
+                        Text(authViewModel.currentUser?.initials ?? "")
                             .font(.title)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
@@ -24,11 +24,11 @@ struct SettingsView: View {
                             .clipShape(Circle())
 
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("John Doe")
+                            Text(authViewModel.currentUser?.fullname ?? "")
                                 .font(.headline)
                                 .fontWeight(.semibold)
 
-                            Text("Email@gmail.com")
+                            Text(authViewModel.currentUser?.email ?? "")
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                         }
@@ -56,15 +56,15 @@ struct SettingsView: View {
                     }
                 }
 
-                //                Section(header: Text("Preferences")) {
-                //                    Toggle(isOn: $toggleState) {
-                //                        HStack {
-                //                            Image(systemName: "moon.fill")
-                //                                .foregroundColor(.purple)
-                //                            Text("Dark Mode")
-                //                        }
-                //                    }
-                //                }
+//                Section(header: Text("Preferences")) {
+//                    Toggle(isOn: $toggleState) {
+//                        HStack {
+//                            Image(systemName: "moon.fill")
+//                                .foregroundColor(.purple)
+//                            Text("Dark Mode")
+//                        }
+//                    }
+//                }
             }
             .navigationBarTitleDisplayMode(.inline)
             .listStyle(InsetGroupedListStyle())

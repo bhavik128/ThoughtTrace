@@ -19,12 +19,6 @@ struct ContentView: View {
                             .imageScale(.large)
                             .foregroundStyle(.tint)
                         Text("Hello, world!")
-
-                        Button {
-                            authViewModel.signOut()
-                        } label: {
-                            Text("Signout")
-                        }
                     }
                     .padding()
                     .toolbar {
