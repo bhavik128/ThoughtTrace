@@ -7,9 +7,10 @@ struct AddTaskView: View {
     @State private var dueDate: Date = Date()
     @State private var description: String = ""
     @State private var status: TaskStatus = .toDo
+    @State private var shouldNavigateToTaskDetail = false
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section(header: CustomHeaderView(text: "Task Details")) {
                     Text("Task Title")
@@ -51,7 +52,9 @@ struct AddTaskView: View {
                 }
                 
                 Button("Add Task") {
-                    addTaskViewModel.addTask(title: title, dueDate: dueDate, description: description.isEmpty ? nil : description, status: status)
+                    addTaskViewModel.addTask(title: title, dueDate: dueDate, description: description.isEmpty ? nil : description, status: status) {
+                        self.shouldNavigateToTaskDetail = true
+                    }
                 }
                 .disabled(title.isEmpty)
                 .padding()
@@ -62,6 +65,14 @@ struct AddTaskView: View {
                 .padding(.horizontal)
                 
                 Spacer()
+                
+                NavigationLink(value: shouldNavigateToTaskDetail, label: {
+                                    EmptyView()
+                                })
+            }
+            .navigationDestination(isPresented: $shouldNavigateToTaskDetail) {
+                // Destination view when navigation is triggered
+                TaskDetailView()
             }
             .padding(.top, 20) // Adds padding at the top of the form
             .navigationBarTitle("Add New Task", displayMode: .inline)
