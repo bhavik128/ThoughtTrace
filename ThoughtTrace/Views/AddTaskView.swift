@@ -40,8 +40,6 @@ struct AddTaskView: View {
                 }
 //                .padding(.vertical, 8)
                 
-//                Spacer() // This spacer might not be needed depending on your layout needs
-                
                 Section(header: CustomHeaderView(text: "Status")) {
                     Picker("Status", selection: $status) {
                         ForEach(TaskStatus.allCases, id: \.self) { status in
@@ -58,7 +56,7 @@ struct AddTaskView: View {
                 }
                 .disabled(title.isEmpty)
                 .padding()
-                .frame(maxWidth: .infinity) // Ensures the button can expand
+                .frame(maxWidth: .infinity)
                 .background(title.isEmpty ? Color.gray : Color.indigo) // Color changes based on the 'disabled' state
                 .foregroundColor(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -71,10 +69,10 @@ struct AddTaskView: View {
                                 })
             }
             .navigationDestination(isPresented: $shouldNavigateToTaskDetail) {
-                // Destination view when navigation is triggered
+                
                 TaskDetailView()
             }
-            .padding(.top, 20) // Adds padding at the top of the form
+            .padding(.top, 20) 
             .navigationBarTitle("Add New Task", displayMode: .inline)
 //            .navigationBarItems(leading: Button("Cancel") {
 //                presentationMode.wrappedValue.dismiss()
