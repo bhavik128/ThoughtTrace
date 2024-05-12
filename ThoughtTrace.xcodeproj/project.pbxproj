@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052517922BEFA79300926AEF /* QuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517912BEFA79300926AEF /* QuoteViewModel.swift */; };
+		052517942BEFA7D500926AEF /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517932BEFA7D500926AEF /* QuoteModel.swift */; };
+		052517962BEFA84600926AEF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517952BEFA84600926AEF /* TaskListView.swift */; };
+		052517982BEFA89200926AEF /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517972BEFA89200926AEF /* AddTaskView.swift */; };
+		0525179A2BEFA8A000926AEF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517992BEFA8A000926AEF /* CalendarView.swift */; };
 		2E0640562BE7BCBF001EE1EE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2E0640552BE7BCBF001EE1EE /* FirebaseAuth */; };
 		2E0640582BE7BCF9001EE1EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */; };
 		2E06405E2BE7C13A001EE1EE /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06405D2BE7C13A001EE1EE /* InputFieldView.swift */; };
@@ -29,6 +34,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		052517912BEFA79300926AEF /* QuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewModel.swift; sourceTree = "<group>"; };
+		052517932BEFA7D500926AEF /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuoteModel.swift; path = ThoughtTrace/Models/QuoteModel.swift; sourceTree = SOURCE_ROOT; };
+		052517952BEFA84600926AEF /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		052517972BEFA89200926AEF /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		052517992BEFA8A000926AEF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E06405D2BE7C13A001EE1EE /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		2E0640612BE7CB66001EE1EE /* InputFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldViewModel.swift; sourceTree = "<group>"; };
@@ -62,6 +72,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0525179D2BEFAA5C00926AEF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		2E0640592BE7BF22001EE1EE /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +87,9 @@
 				2EBB62C82BE877EB0003A7DF /* SignInView.swift */,
 				2EBB62CA2BE882220003A7DF /* SignUpView.swift */,
 				2ECC78E62BEE526600C8ED1A /* SettingsView.swift */,
+				052517952BEFA84600926AEF /* TaskListView.swift */,
+				052517972BEFA89200926AEF /* AddTaskView.swift */,
+				052517992BEFA8A000926AEF /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -80,6 +100,7 @@
 				2E0640612BE7CB66001EE1EE /* InputFieldViewModel.swift */,
 				2E0640632BE7CE38001EE1EE /* AuthViewModel.swift */,
 				2EB7C9C02BE9E45100EB1443 /* ToastViewModel.swift */,
+				052517912BEFA79300926AEF /* QuoteViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -88,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				2E8F07E22BEF165200AB4F08 /* UserModel.swift */,
+				052517932BEFA7D500926AEF /* QuoteModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,6 +143,7 @@
 		2E6F61E52BE25D050022ACE0 /* ThoughtTrace */ = {
 			isa = PBXGroup;
 			children = (
+				0525179D2BEFAA5C00926AEF /* Models */,
 				2E06405C2BE7BF40001EE1EE /* App */,
 				2E06405B2BE7BF38001EE1EE /* Models */,
 				2E06405A2BE7BF2C001EE1EE /* ViewModels */,
@@ -223,8 +246,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				052517942BEFA7D500926AEF /* QuoteModel.swift in Sources */,
+				052517922BEFA79300926AEF /* QuoteViewModel.swift in Sources */,
 				2EBB62C92BE877EB0003A7DF /* SignInView.swift in Sources */,
+				052517982BEFA89200926AEF /* AddTaskView.swift in Sources */,
+				052517962BEFA84600926AEF /* TaskListView.swift in Sources */,
 				2E0640642BE7CE38001EE1EE /* AuthViewModel.swift in Sources */,
+				0525179A2BEFA8A000926AEF /* CalendarView.swift in Sources */,
 				2E0640622BE7CB66001EE1EE /* InputFieldViewModel.swift in Sources */,
 				2ECC78E72BEE526600C8ED1A /* SettingsView.swift in Sources */,
 				2EBB62CB2BE882220003A7DF /* SignUpView.swift in Sources */,
