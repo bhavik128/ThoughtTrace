@@ -128,6 +128,7 @@ struct ContentView: View {
                             } label: {
                                 Image(systemName: "gearshape.fill")
                                     .imageScale(.large)
+                                    .tint(.indigo)
                             }
                         }
                     }

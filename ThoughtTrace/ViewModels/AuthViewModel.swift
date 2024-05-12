@@ -8,6 +8,7 @@
 import FirebaseAuth
 import FirebaseFirestore
 import Foundation
+import SwiftUI
 
 protocol AuthFormProtocol {
     var isFormValid: Bool { get }
@@ -100,6 +101,30 @@ class AuthViewModel: ObservableObject {
             }
         } else {
             currentUser = nil
+        }
+    }
+
+    func changePassword(password: String, dismiss: DismissAction) async {
+        do {
+            try await userSession?.updatePassword(to: password)
+
+            dismiss()
+        } catch {
+            if let error = error as NSError? {
+                let code = AuthErrorCode.Code(rawValue: error.code)
+
+                switch code {
+                case .requiresRecentLogin:
+                    authErrorMessage =
+                        "This operation is sensitive and requires recent login. Please login again"
+                case .weakPassword:
+                    authErrorMessage = "Password is too weak. Please use different password"
+                default:
+                    authErrorMessage = "Something went wrong, Please try again"
+                }
+
+                showToast = true
+            }
         }
     }
 

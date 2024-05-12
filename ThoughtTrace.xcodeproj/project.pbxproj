@@ -31,6 +31,7 @@
 		2ECC78E12BEE509C00C8ED1A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2ECC78E02BEE509C00C8ED1A /* FirebaseFirestore */; };
 		2ECC78E32BEE509C00C8ED1A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2ECC78E22BEE509C00C8ED1A /* FirebaseFirestoreSwift */; };
 		2ECC78E72BEE526600C8ED1A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC78E62BEE526600C8ED1A /* SettingsView.swift */; };
+		2EE3864F2BF0A15D00EA2632 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE3864E2BF0A15D00EA2632 /* ChangePasswordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		2EBB62C82BE877EB0003A7DF /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2EBB62CA2BE882220003A7DF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		2ECC78E62BEE526600C8ED1A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2EE3864E2BF0A15D00EA2632 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				052517952BEFA84600926AEF /* TaskListView.swift */,
 				052517972BEFA89200926AEF /* AddTaskView.swift */,
 				052517992BEFA8A000926AEF /* CalendarView.swift */,
+				2EE3864E2BF0A15D00EA2632 /* ChangePasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				052517962BEFA84600926AEF /* TaskListView.swift in Sources */,
 				2E0640642BE7CE38001EE1EE /* AuthViewModel.swift in Sources */,
 				0525179A2BEFA8A000926AEF /* CalendarView.swift in Sources */,
+				2EE3864F2BF0A15D00EA2632 /* ChangePasswordView.swift in Sources */,
 				2E0640622BE7CB66001EE1EE /* InputFieldViewModel.swift in Sources */,
 				2ECC78E72BEE526600C8ED1A /* SettingsView.swift in Sources */,
 				2EBB62CB2BE882220003A7DF /* SignUpView.swift in Sources */,
