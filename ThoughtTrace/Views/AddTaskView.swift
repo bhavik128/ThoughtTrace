@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct AddTaskView: View {
+    @EnvironmentObject var addTaskViewModel: AddTaskViewModel
     @Environment(\.presentationMode) var presentationMode
     @State private var title: String = ""
     @State private var dueDate: Date = Date()
@@ -50,7 +51,7 @@ struct AddTaskView: View {
                 }
                 
                 Button("Add Task") {
-                    addTask()
+                    addTaskViewModel.addTask(title: title, dueDate: dueDate, description: description.isEmpty ? nil : description, status: status)
                 }
                 .disabled(title.isEmpty)
                 .padding()
@@ -69,14 +70,10 @@ struct AddTaskView: View {
 //            })
         }
     }
-    
-    func addTask() {
-        //  task creation logic here
-    }
 }
 
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskView()
+        AddTaskView().environmentObject(AddTaskViewModel())
     }
 }

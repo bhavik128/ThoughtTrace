@@ -13,15 +13,16 @@ enum TaskStatus: String, Codable, CaseIterable {
     case completed = "Completed"
 }
 
-struct ToDoTask: Identifiable, Codable {
-    var id: UUID = UUID()
+struct ToDoTaskModel: Identifiable, Codable {
+    var id: String
     var title: String
     var dateCreated: Date
     var dueDate: Date
     var description: String?
     var status: TaskStatus
 
-    init(title: String, dateCreated: Date = Date(), dueDate: Date, description: String? = nil, status: TaskStatus = .toDo) {
+    init(id: String, title: String, dateCreated: Date = Date(), dueDate: Date, description: String? = nil, status: TaskStatus = .toDo) {
+        self.id = id
         self.title = title
         self.dateCreated = dateCreated
         self.dueDate = dueDate

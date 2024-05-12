@@ -15,6 +15,7 @@
 		052517A32BEFB4A000926AEF /* DayTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517A22BEFB4A000926AEF /* DayTaskView.swift */; };
 		054E7E402BEFBA9A00607B4B /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E7E3F2BEFBA9A00607B4B /* TaskModel.swift */; };
 		054E7E422BEFC04A00607B4B /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E7E412BEFC04A00607B4B /* CustomHeaderView.swift */; };
+		058C0C852BF0CDC30025B702 /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058C0C842BF0CDC30025B702 /* AddTaskViewModel.swift */; };
 		2E0640562BE7BCBF001EE1EE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2E0640552BE7BCBF001EE1EE /* FirebaseAuth */; };
 		2E0640582BE7BCF9001EE1EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */; };
 		2E06405E2BE7C13A001EE1EE /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06405D2BE7C13A001EE1EE /* InputFieldView.swift */; };
@@ -47,6 +48,7 @@
 		052517A22BEFB4A000926AEF /* DayTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTaskView.swift; sourceTree = "<group>"; };
 		054E7E3F2BEFBA9A00607B4B /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		054E7E412BEFC04A00607B4B /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
+		058C0C842BF0CDC30025B702 /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
 		2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E06405D2BE7C13A001EE1EE /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		2E0640612BE7CB66001EE1EE /* InputFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldViewModel.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				2EB7C9C02BE9E45100EB1443 /* ToastViewModel.swift */,
 				052517912BEFA79300926AEF /* QuoteViewModel.swift */,
 				2EE386502BF0AE9C00EA2632 /* SettingsViewModel.swift */,
+				058C0C842BF0CDC30025B702 /* AddTaskViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				054E7E422BEFC04A00607B4B /* CustomHeaderView.swift in Sources */,
 				052517942BEFA7D500926AEF /* QuoteModel.swift in Sources */,
 				052517922BEFA79300926AEF /* QuoteViewModel.swift in Sources */,
+				058C0C852BF0CDC30025B702 /* AddTaskViewModel.swift in Sources */,
 				2EBB62C92BE877EB0003A7DF /* SignInView.swift in Sources */,
 				052517982BEFA89200926AEF /* AddTaskView.swift in Sources */,
 				052517962BEFA84600926AEF /* TaskListView.swift in Sources */,
