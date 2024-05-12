@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    @State private var showChangePassword = false
+    
+    @StateObject var settingsViewModel = SettingsViewModel()
 
     var body: some View {
         NavigationView {
@@ -38,7 +39,7 @@ struct SettingsView: View {
 
                 Section(header: Text("Account")) {
                     Button {
-                        showChangePassword.toggle()
+                        settingsViewModel.showChangePassword.toggle()
                     } label: {
                         HStack {
                             Image(systemName: "key.fill")
@@ -71,7 +72,7 @@ struct SettingsView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showChangePassword) {
+            .sheet(isPresented: $settingsViewModel.showChangePassword) {
                 ChangePasswordView()
             }
         }

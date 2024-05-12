@@ -5,25 +5,20 @@
 //  Created by Bhavik Chotalia on 12/5/2024.
 //
 
-import SwiftUI
 import SimpleToast
+import SwiftUI
 
 struct ChangePasswordView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var toastViewModel: ToastViewModel
+    @Environment(\.dismiss) var dismiss
+
     @StateObject private var newPasswordViewModel = InputFieldViewModel(
-        text: "",
-        title: "New Password",
-        placeholder: "Enter new password",
-        isSecureField: true
+        text: "", title: "New Password", placeholder: "Enter new password", isSecureField: true
     )
     @StateObject private var confirmPasswordViewModel = InputFieldViewModel(
-        text: "",
-        title: "Confirm Password",
-        placeholder: "Confirm new password",
-        isSecureField: true
+        text: "", title: "Confirm Password", placeholder: "Confirm new password", isSecureField: true
     )
-    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationView {
@@ -33,7 +28,9 @@ struct ChangePasswordView: View {
 
                 Button {
                     Task {
-                        await authViewModel.changePassword(password: newPasswordViewModel.text, dismiss: dismiss)
+                        await authViewModel.changePassword(
+                            password: newPasswordViewModel.text, dismiss: dismiss
+                        )
                     }
                 } label: {
                     Text("Update Password")
