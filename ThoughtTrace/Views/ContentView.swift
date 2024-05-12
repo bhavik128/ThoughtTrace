@@ -130,5 +130,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView().environmentObject(AuthViewModel())
+    ContentView().environmentObject(AuthViewModel()).environmentObject(ToastViewModel())
 }

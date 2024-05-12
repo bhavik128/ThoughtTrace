@@ -5,10 +5,12 @@
 //  Created by Bhavik Chotalia on 6/5/2024.
 //
 
+import SimpleToast
 import SwiftUI
 
 struct SignInView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var toastViewModel: ToastViewModel
 
     @StateObject var emailFieldViewModel = InputFieldViewModel(
         text: "", title: "Email", placeholder: "Enter Email", isSecureField: false
@@ -63,6 +65,17 @@ struct SignInView: View {
                 }
             }
         }
+        .simpleToast(
+            isPresented: $authViewModel.showToast, options: toastViewModel.toastOptions,
+            onDismiss: { authViewModel.resetError() }
+        ) {
+            Label(authViewModel.authErrorMessage, systemImage: "exclamationmark.triangle")
+                .padding()
+                .background(Color.red)
+                .foregroundColor(Color.white)
+                .cornerRadius(10)
+                .padding(.top)
+        }
     }
 }
 
@@ -74,5 +87,5 @@ extension SignInView: AuthFormProtocol {
 }
 
 #Preview {
-    SignInView().environmentObject(AuthViewModel())
+    SignInView().environmentObject(AuthViewModel()).environmentObject(ToastViewModel())
 }

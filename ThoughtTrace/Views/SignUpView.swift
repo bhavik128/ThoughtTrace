@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignUpView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var toastViewModel: ToastViewModel
     @Environment(\.dismiss) var dismiss
 
     @StateObject var nameFieldViewModel = InputFieldViewModel(
@@ -56,8 +57,9 @@ struct SignUpView: View {
                 HStack {
                     Text("Sign Up").bold()
                     Image(systemName: "arrow.right")
-                }.foregroundColor(.white)
-                    .frame(width: UIScreen.main.bounds.width - 32, height: 48)
+                }
+                .foregroundColor(.white)
+                .frame(width: UIScreen.main.bounds.width - 32, height: 48)
             }
             .background(.blue)
             .cornerRadius(10)
@@ -76,6 +78,17 @@ struct SignUpView: View {
                 }
             }
         }
+        .simpleToast(
+            isPresented: $authViewModel.showToast, options: toastViewModel.toastOptions,
+            onDismiss: { authViewModel.resetError() }
+        ) {
+            Label(authViewModel.authErrorMessage, systemImage: "exclamationmark.triangle")
+                .padding()
+                .background(Color.red)
+                .foregroundColor(Color.white)
+                .cornerRadius(10)
+                .padding(.top)
+        }
     }
 }
 
@@ -90,5 +103,5 @@ extension SignUpView: AuthFormProtocol {
 }
 
 #Preview {
-    SignUpView().environmentObject(AuthViewModel())
+    SignUpView().environmentObject(AuthViewModel()).environmentObject(ToastViewModel())
 }
