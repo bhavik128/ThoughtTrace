@@ -12,85 +12,109 @@ struct ToDoTaskDetailView: View {
     var currentToDoTask: ToDoTask
     
     var body: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Text("\(currentToDoTask.title)")
-                    .font(.largeTitle)
-                    .foregroundStyle(.indigo)
-                    .padding(.leading, 20)
-                    .fontWeight(.bold)
-                                    
+        NavigationView {
+            VStack {
                 Spacer()
-                
-                Image("bin")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30, height: 30)
-                    .padding(.trailing, 20)
-                
-                Image("edit")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 38, height: 38)
-                    .padding(.trailing, 20)
-                
-            }
-            HStack {
-                Text("\((currentToDoTask.status.rawValue))")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .background(priorityColour(taskStatus: currentToDoTask.status))
-                Spacer()
-            }
-            .padding(.leading, 20)
-            Divider()
-            HStack {
-                Text("Priority:")
-                    .fontWeight(.bold)
-                Text("\(currentToDoTask.priority)")
-                    .foregroundStyle(.red)
+                HStack {
+                    Text("\(currentToDoTask.title)")
+                        .font(.largeTitle)
+                        .foregroundStyle(.indigo)
+                        .padding(.leading, 20)
+                        .fontWeight(.bold)
                     
-                Spacer()
-            }
-            .padding(.leading, 20)
-            .padding(.bottom, 1)
-            
-            HStack {
-                Text("Due Date: ")
-                    .fontWeight(.bold)
-                // add formatting
-                Text("\((currentToDoTask.dueDate).formatted(date: .abbreviated, time: .omitted))")
-                Spacer()
-            }
-            .padding(.leading, 20)
-            .padding(.bottom, 1)
-            
-            HStack {
-                Text("Description")
-                    .fontWeight(.bold)
-                Text("\(currentToDoTask.description)")
-                Spacer()
-            }
-            .padding(.leading, 20)
-            .padding(.bottom, 1)
-            
-            HStack{
-                Text("Comments:")
-                    .fontWeight(.bold)
-                Spacer()
-            }
-            .padding(.leading, 20)
-            
-            
-            List {
-                ForEach(currentToDoTask.comments, id: \.self) { comment in
-                    Text("• \(comment)")
+                    Spacer()
+                    
+                    VStack {
+                        
+                        Image("bin")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                        
+                        // change to correct location/sheet
+                        NavigationLink(destination: ContentView()) {
+                            Text("Delete Task")
+                                .font(.subheadline)
+                                .foregroundStyle(.indigo)
+                        }
+                        
+                    }
+                    .padding(.top, 10)
+                    .padding(.trailing, 5)
+                    
+                    VStack {
+                        Image("edit")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 38, height: 38)
+                            
+                        // change to correct location/sheet
+                        NavigationLink(destination: ContentView()) {
+                            Text("Edit Task")
+                                .font(.subheadline)
+                                .foregroundStyle(.indigo)
+                        }
+                    }
+                    .padding(.top, 2)
+                    .padding(.trailing, 10)
+                    
+                }
+                .padding(.trailing, 10)
+                HStack {
+                    Text("\((currentToDoTask.status.rawValue))")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .background(priorityColour(taskStatus: currentToDoTask.status))
+                    Spacer()
+                }
+                .padding(.leading, 20)
+                Divider()
+                HStack {
+                    Text("Priority:")
+                        .fontWeight(.bold)
+                    Text("\(currentToDoTask.priority)")
+                        .foregroundStyle(.red)
+                    
+                    Spacer()
+                }
+                .padding(.leading, 20)
+                .padding(.bottom, 1)
+                
+                HStack {
+                    Text("Due Date: ")
+                        .fontWeight(.bold)
+                    // add formatting
+                    Text("\((currentToDoTask.dueDate).formatted(date: .abbreviated, time: .omitted))")
+                    Spacer()
+                }
+                .padding(.leading, 20)
+                .padding(.bottom, 1)
+                
+                HStack {
+                    Text("Description")
+                        .fontWeight(.bold)
+                    Text("\(currentToDoTask.description)")
+                    Spacer()
+                }
+                .padding(.leading, 20)
+                .padding(.bottom, 1)
+                
+                HStack{
+                    Text("Comments:")
+                        .fontWeight(.bold)
+                    Spacer()
+                }
+                .padding(.leading, 20)
+                
+                
+                List {
+                    ForEach(currentToDoTask.comments, id: \.self) { comment in
+                        Text("• \(comment)")
+                    }
+                    
                 }
                 
             }
-            
-            
             
         }
     }
