@@ -13,6 +13,7 @@
 		052517982BEFA89200926AEF /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517972BEFA89200926AEF /* AddTaskView.swift */; };
 		0525179A2BEFA8A000926AEF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517992BEFA8A000926AEF /* CalendarView.swift */; };
 		052517A32BEFB4A000926AEF /* DayTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517A22BEFB4A000926AEF /* DayTaskView.swift */; };
+		0546027A2BF25F2B00A9328E /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054602792BF25F2B00A9328E /* TaskDetailViewModel.swift */; };
 		054E7E402BEFBA9A00607B4B /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E7E3F2BEFBA9A00607B4B /* TaskModel.swift */; };
 		054E7E422BEFC04A00607B4B /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E7E412BEFC04A00607B4B /* CustomHeaderView.swift */; };
 		058C0C852BF0CDC30025B702 /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058C0C842BF0CDC30025B702 /* AddTaskViewModel.swift */; };
@@ -49,6 +50,7 @@
 		052517972BEFA89200926AEF /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		052517992BEFA8A000926AEF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		052517A22BEFB4A000926AEF /* DayTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTaskView.swift; sourceTree = "<group>"; };
+		054602792BF25F2B00A9328E /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
 		054E7E3F2BEFBA9A00607B4B /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		054E7E412BEFC04A00607B4B /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		058C0C842BF0CDC30025B702 /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				058C0C842BF0CDC30025B702 /* AddTaskViewModel.swift */,
 				058C0C882BF0E7A00025B702 /* DayTaskViewModel.swift */,
 				058C0C8A2BF0F6A40025B702 /* LoadTasksViewModel.swift */,
+				054602792BF25F2B00A9328E /* TaskDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				054E7E402BEFBA9A00607B4B /* TaskModel.swift in Sources */,
 				2EB7C9C12BE9E45100EB1443 /* ToastViewModel.swift in Sources */,
 				2E8F07E32BEF165200AB4F08 /* UserModel.swift in Sources */,
+				0546027A2BF25F2B00A9328E /* TaskDetailViewModel.swift in Sources */,
 				2E06405E2BE7C13A001EE1EE /* InputFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

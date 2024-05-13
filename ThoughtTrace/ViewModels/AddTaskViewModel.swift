@@ -13,7 +13,7 @@ class AddTaskViewModel: ObservableObject {
     
     private var db = Firestore.firestore()
     
-    func addTask(title: String, dueDate: Date, description: String?, status: TaskStatus, priority: Int, comments: [String], completion: @escaping () -> Void) {
+    func addTask(title: String, dueDate: Date, description: String?, status: TaskStatus, priority: Int, comments: [String], completion: @escaping (String?) -> Void) {
         let taskId = UUID().uuidString
         let newTask = ToDoTaskModel(id: taskId, title: title, dateCreated: Date(), dueDate: dueDate, description: description, status: status, priority: priority, comments: comments)
         
@@ -26,7 +26,7 @@ class AddTaskViewModel: ObservableObject {
                     print("Error writing task: \(error)")
                 } else {
                     print("Task successfully written")
-                    completion()
+                    completion(taskId)
                 }
             }
         } catch let error {

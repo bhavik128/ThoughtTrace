@@ -3,6 +3,7 @@ import SwiftUI
 struct AddTaskView: View {
     @EnvironmentObject var addTaskViewModel: AddTaskViewModel
     @Environment(\.presentationMode) var presentationMode
+
     @State private var title: String = ""
     @State private var dueDate: Date = Date()
     @State private var description: String = ""
@@ -10,6 +11,7 @@ struct AddTaskView: View {
     @State private var priority: Int = 1
     @State private var comments: String = ""
     @State private var shouldNavigateToTaskDetail = false
+    @State private var taskAddedSuccess = false
 
     var body: some View {
         NavigationStack {
@@ -66,8 +68,8 @@ struct AddTaskView: View {
                 }
                 
                 Button("Add Task") {
-                    addTaskViewModel.addTask(title: title, dueDate: dueDate, description: description.isEmpty ? nil : description, status: status, priority: priority, comments: comments.isEmpty ? [] : [comments]) {
-                        self.shouldNavigateToTaskDetail = true
+                    addTaskViewModel.addTask(title: title, dueDate: dueDate, description: description.isEmpty ? nil : description, status: status, priority: priority, comments: comments.isEmpty ? [] : [comments]) { _ in
+                        taskAddedSuccess = true
                     }
                 }
                 .disabled(title.isEmpty)
@@ -78,27 +80,36 @@ struct AddTaskView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.horizontal)
                 
-                Spacer()
+                if taskAddedSuccess {
+                    Text("Task successfully added!")
+                        .font(.headline)
+                        .foregroundColor(.green)
+                }
                 
-                NavigationLink(value: shouldNavigateToTaskDetail, label: {
-                                    EmptyView()
-                                })
             }
-//            .navigationDestination(isPresented: $shouldNavigateToTaskDetail) {
-//                
-//                ToDoTaskDetailView(currentToDoTask: <#ToDoTaskModel#>)
-//            }
-            .padding(.top, 20) 
-            .navigationBarTitle("Add New Task", displayMode: .inline)
-//            .navigationBarItems(leading: Button("Cancel") {
-//                presentationMode.wrappedValue.dismiss()
-//            })
+            .navigationTitle("Add New Task")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink {
+                        ContentView()
+                    } label: {
+                        Image(systemName: "house.fill")
+                            .imageScale(.large)
+                    }
+                }
+            }
+            .alert("Task Added", isPresented: $taskAddedSuccess, actions: {
+                Button("OK", role: .cancel) { }
+            }, message: {
+                Text("Your task has been successfully added.")
+            })
         }
+        .navigationBarHidden(true)
     }
 }
 
 struct AddTaskView_Previews: PreviewProvider {
     static var previews: some View {
-        AddTaskView().environmentObject(AddTaskViewModel())
+        AddTaskView().environmentObject(AddTaskViewModel()).environmentObject(AuthViewModel())
     }
 }

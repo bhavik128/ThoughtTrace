@@ -18,39 +18,41 @@ struct DayTaskView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         ForEach(viewModel.tasks, id: \.id) { task in
-                            HStack {
-                                Text(task.title)
-                                    .font(.title)
-                                    .bold()
-                                    .foregroundColor(.white)
-                                    .lineLimit(1)
-                                
-                                Spacer()
-                                
-                                Text(task.status.rawValue)
-                                    .font(.headline)
-                                    .foregroundColor(.yellow)
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical, 5)
-                                    .background(Color.black.opacity(0.5))
-                                    .cornerRadius(10)
+                            NavigationLink(destination: ToDoTaskDetailView(taskId: task.id)) {
+                                HStack {
+                                    Text(task.title)
+                                        .font(.title)
+                                        .bold()
+                                        .foregroundColor(.white)
+                                        .lineLimit(1)
+                                    
+                                    Spacer()
+                                    
+                                    Text(task.status.rawValue)
+                                        .font(.headline)
+                                        .foregroundColor(.yellow)
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 5)
+                                        .background(Color.black.opacity(0.5))
+                                        .cornerRadius(10)
+                                }
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 16)
+                                .background(task.status == .completed ? Color.gray : Color.indigo) // Different background for completed tasks
+                                .cornerRadius(5)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .background(task.status == .completed ? Color.gray : Color.indigo) // Different background for completed tasks
-                            .cornerRadius(5)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            
                         }
                     }
                     .padding(.horizontal, 30)
-                    .padding(.top, 35)
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
                 }
                 .onAppear {
                     viewModel.fetchTasks(for: date)
                 }
             }
-            .padding(.top, 40)
+            .padding(.top, 25)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     NavigationLink {
@@ -63,6 +65,7 @@ struct DayTaskView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
         }
+        .navigationBarHidden(true)
     }
 }
 
