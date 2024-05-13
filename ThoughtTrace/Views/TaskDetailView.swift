@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ToDoTaskDetailView: View {
     //    @ObservedObject var viewModel: TaskViewModel
-    var currentToDoTask: ToDoTask
+    var currentToDoTask: ToDoTaskModel
     
     var body: some View {
         NavigationView {
@@ -93,7 +93,7 @@ struct ToDoTaskDetailView: View {
                 HStack {
                     Text("Description")
                         .fontWeight(.bold)
-                    Text("\(currentToDoTask.description)")
+                    Text("\(currentToDoTask.description ?? "")")
                     Spacer()
                 }
                 .padding(.leading, 20)
@@ -140,7 +140,25 @@ func priorityColour(taskStatus: TaskStatus) -> Color {
         return .gray
     }
 }
-    #Preview {
-        ToDoTaskDetailView(currentToDoTask: ToDoTask(title: "Test", description: "testing this now", dateCreated: Date(), dueDate: Date(), status: .toDo, priority: 1, comments: ["Started today", "added list", "tried again"]))
+
+extension ToDoTaskModel {
+    static var mock: ToDoTaskModel {
+        ToDoTaskModel(
+            id: "1",
+            title: "Sample Task",
+            dateCreated: Date(),
+            dueDate: Date().addingTimeInterval(86400 * 7), // One week from now
+            description: "Detailed description of the task here...",
+            status: .doing,
+            priority: 2,
+            comments: ["First comment", "Second comment"]
+        )
     }
+}
+
+struct ToDoTaskDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        ToDoTaskDetailView(currentToDoTask: ToDoTaskModel.mock)
+    }
+}
     
