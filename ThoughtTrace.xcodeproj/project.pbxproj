@@ -12,6 +12,8 @@
 		052517962BEFA84600926AEF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517952BEFA84600926AEF /* TaskListView.swift */; };
 		052517982BEFA89200926AEF /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517972BEFA89200926AEF /* AddTaskView.swift */; };
 		0525179A2BEFA8A000926AEF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517992BEFA8A000926AEF /* CalendarView.swift */; };
+		095C66572BF200380018F7E1 /* ToDoTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C66562BF200380018F7E1 /* ToDoTaskModel.swift */; };
+		095C66592BF2006B0018F7E1 /* ToDoTaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095C66582BF2006B0018F7E1 /* ToDoTaskDetailView.swift */; };
 		2E0640562BE7BCBF001EE1EE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2E0640552BE7BCBF001EE1EE /* FirebaseAuth */; };
 		2E0640582BE7BCF9001EE1EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */; };
 		2E06405E2BE7C13A001EE1EE /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E06405D2BE7C13A001EE1EE /* InputFieldView.swift */; };
@@ -39,6 +41,8 @@
 		052517952BEFA84600926AEF /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		052517972BEFA89200926AEF /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		052517992BEFA8A000926AEF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		095C66562BF200380018F7E1 /* ToDoTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskModel.swift; sourceTree = "<group>"; };
+		095C66582BF2006B0018F7E1 /* ToDoTaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskDetailView.swift; sourceTree = "<group>"; };
 		2E0640572BE7BCF9001EE1EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E06405D2BE7C13A001EE1EE /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		2E0640612BE7CB66001EE1EE /* InputFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldViewModel.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 				052517952BEFA84600926AEF /* TaskListView.swift */,
 				052517972BEFA89200926AEF /* AddTaskView.swift */,
 				052517992BEFA8A000926AEF /* CalendarView.swift */,
+				095C66582BF2006B0018F7E1 /* ToDoTaskDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				2E8F07E22BEF165200AB4F08 /* UserModel.swift */,
+				095C66562BF200380018F7E1 /* ToDoTaskModel.swift */,
 				052517932BEFA7D500926AEF /* QuoteModel.swift */,
 			);
 			path = Models;
@@ -247,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				052517942BEFA7D500926AEF /* QuoteModel.swift in Sources */,
+				095C66592BF2006B0018F7E1 /* ToDoTaskDetailView.swift in Sources */,
 				052517922BEFA79300926AEF /* QuoteViewModel.swift in Sources */,
 				2EBB62C92BE877EB0003A7DF /* SignInView.swift in Sources */,
 				052517982BEFA89200926AEF /* AddTaskView.swift in Sources */,
@@ -254,6 +261,7 @@
 				2E0640642BE7CE38001EE1EE /* AuthViewModel.swift in Sources */,
 				0525179A2BEFA8A000926AEF /* CalendarView.swift in Sources */,
 				2E0640622BE7CB66001EE1EE /* InputFieldViewModel.swift in Sources */,
+				095C66572BF200380018F7E1 /* ToDoTaskModel.swift in Sources */,
 				2ECC78E72BEE526600C8ED1A /* SettingsView.swift in Sources */,
 				2EBB62CB2BE882220003A7DF /* SignUpView.swift in Sources */,
 				2E6F61E92BE25D060022ACE0 /* ContentView.swift in Sources */,
