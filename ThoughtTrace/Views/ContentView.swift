@@ -11,9 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     
     @StateObject private var quoteViewModel = QuoteViewModel()
-    @State private var topTasks = [
-        "Task 1", "Task 2", "Task 3", "Task 4", "Task 5", "Task 6", "Task 7", "Task 8", "Task 9",
-    ] // list to be replaced with actual tasks
+    @StateObject private var taskViewModel = LoadTasksViewModel()
 
     var body: some View {
         NavigationView {
@@ -21,39 +19,28 @@ struct ContentView: View {
                 if authViewModel.isAuthenticated {
                     VStack {
                         Text("ThoughtTrace")
-                            .font(.title)
+                            .font(.largeTitle)
                             .bold()
                             .foregroundColor(.indigo)
                         Spacer()
 
                         VStack(alignment: .center) {
                             Text("Upcoming Tasks")
-                                .font(.headline)
+                                .font(.title2)
                                 .foregroundColor(.indigo)
                                 .bold()
 
                             ScrollView {
                                 LazyVStack {
-                                    ForEach(topTasks, id: \.self) { task in
-                                        Text(task)
-                                            .padding(.vertical, 5)
-                                            .frame(minWidth: 200)
-                                            .background(.indigo)
-                                            .cornerRadius(10)
-                                            .foregroundColor(.white)
+                                    ForEach(taskViewModel.tasks) { task in
+                                        TaskRowView(task: task)
                                     }
                                 }
                             }
-
-                            NavigationLink(destination: TaskListView()) {
-                                Text("See All Tasks")
-                                    .bold()
-                                    .foregroundColor(.indigo)
-                            }
                         }
                         .padding()
-                        .frame(width: 300)
-                        .frame(height: 250)
+                        .frame(width: 350)
+                        .frame(height: 450)
                         .background(.indigo.opacity(0.3))
                         .cornerRadius(25)
                         Spacer()
@@ -90,7 +77,6 @@ struct ContentView: View {
                             }
                         }
                         .padding()
-                        Spacer()
 
                         VStack {
                             if let quote = quoteViewModel.quote {
@@ -138,6 +124,37 @@ struct ContentView: View {
                 }
             }
         }
+    }
+}
+
+struct TaskRowView: View {
+    var task: ToDoTaskModel
+
+    var body: some View {
+        HStack {
+            Text(task.title)
+                .font(.title)
+                .bold()
+                .foregroundColor(.white)
+                .lineLimit(1)
+                .padding(.vertical, 5)
+                .padding(.horizontal, 10)
+
+            Spacer()
+
+            Text(task.status.rawValue)
+                .font(.headline)
+                .foregroundColor(.yellow)
+                .padding(.horizontal, 15)
+                .padding(.vertical, 5)
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(10)
+        }
+        .frame(minWidth: 300)
+        .background(Color.indigo)
+        .cornerRadius(7)
+        .padding(.vertical, 2)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
