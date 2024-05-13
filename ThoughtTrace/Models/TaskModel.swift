@@ -35,3 +35,12 @@ struct ToDoTaskModel: Identifiable, Codable {
     }
     
 }
+
+extension ToDoTaskModel {
+    static func decode(from data: [String: Any]) throws -> ToDoTaskModel {
+        let jsonData = try JSONSerialization.data(withJSONObject: data, options: [])
+        let decoder = JSONDecoder()
+        return try decoder.decode(ToDoTaskModel.self, from: jsonData)
+    }
+}
+

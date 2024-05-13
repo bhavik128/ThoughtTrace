@@ -14,6 +14,8 @@
 		0525179A2BEFA8A000926AEF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517992BEFA8A000926AEF /* CalendarView.swift */; };
 		052517A32BEFB4A000926AEF /* DayTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517A22BEFB4A000926AEF /* DayTaskView.swift */; };
 		0546027A2BF25F2B00A9328E /* TaskDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054602792BF25F2B00A9328E /* TaskDetailViewModel.swift */; };
+		0546027C2BF2827C00A9328E /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0546027B2BF2827C00A9328E /* EditTaskView.swift */; };
+		0546027E2BF2859D00A9328E /* EditTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0546027D2BF2859D00A9328E /* EditTaskViewModel.swift */; };
 		054E7E402BEFBA9A00607B4B /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E7E3F2BEFBA9A00607B4B /* TaskModel.swift */; };
 		054E7E422BEFC04A00607B4B /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054E7E412BEFC04A00607B4B /* CustomHeaderView.swift */; };
 		058C0C852BF0CDC30025B702 /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058C0C842BF0CDC30025B702 /* AddTaskViewModel.swift */; };
@@ -51,6 +53,8 @@
 		052517992BEFA8A000926AEF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		052517A22BEFB4A000926AEF /* DayTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTaskView.swift; sourceTree = "<group>"; };
 		054602792BF25F2B00A9328E /* TaskDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewModel.swift; sourceTree = "<group>"; };
+		0546027B2BF2827C00A9328E /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
+		0546027D2BF2859D00A9328E /* EditTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewModel.swift; sourceTree = "<group>"; };
 		054E7E3F2BEFBA9A00607B4B /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		054E7E412BEFC04A00607B4B /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		058C0C842BF0CDC30025B702 /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				052517A22BEFB4A000926AEF /* DayTaskView.swift */,
 				054E7E412BEFC04A00607B4B /* CustomHeaderView.swift */,
 				058C0C862BF0E1DD0025B702 /* TaskDetailView.swift */,
+				0546027B2BF2827C00A9328E /* EditTaskView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 				058C0C882BF0E7A00025B702 /* DayTaskViewModel.swift */,
 				058C0C8A2BF0F6A40025B702 /* LoadTasksViewModel.swift */,
 				054602792BF25F2B00A9328E /* TaskDetailViewModel.swift */,
+				0546027D2BF2859D00A9328E /* EditTaskViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -269,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				054E7E422BEFC04A00607B4B /* CustomHeaderView.swift in Sources */,
+				0546027C2BF2827C00A9328E /* EditTaskView.swift in Sources */,
 				052517942BEFA7D500926AEF /* QuoteModel.swift in Sources */,
 				052517922BEFA79300926AEF /* QuoteViewModel.swift in Sources */,
 				058C0C852BF0CDC30025B702 /* AddTaskViewModel.swift in Sources */,
@@ -289,6 +296,7 @@
 				2E6F61E92BE25D060022ACE0 /* ContentView.swift in Sources */,
 				2E6F61E72BE25D050022ACE0 /* ThoughtTraceApp.swift in Sources */,
 				054E7E402BEFBA9A00607B4B /* TaskModel.swift in Sources */,
+				0546027E2BF2859D00A9328E /* EditTaskViewModel.swift in Sources */,
 				2EB7C9C12BE9E45100EB1443 /* ToastViewModel.swift in Sources */,
 				2E8F07E32BEF165200AB4F08 /* UserModel.swift in Sources */,
 				0546027A2BF25F2B00A9328E /* TaskDetailViewModel.swift in Sources */,

@@ -6,6 +6,7 @@ struct DayTaskView: View {
     @ObservedObject private var viewModel = DayTaskViewModel()
 
     var body: some View {
+
         NavigationView {
             VStack{
                 
@@ -38,7 +39,7 @@ struct DayTaskView: View {
                                 }
                                 .padding(.vertical, 8)
                                 .padding(.horizontal, 16)
-                                .background(task.status == .completed ? Color.gray : Color.indigo) // Different background for completed tasks
+                                .background(priorityColor(for: task))
                                 .cornerRadius(5)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             }
@@ -67,7 +68,27 @@ struct DayTaskView: View {
         }
         .navigationBarHidden(true)
     }
-}
+    
+    private func priorityColor(for task: ToDoTaskModel) -> Color {
+        if task.status == .completed {
+            return .gray // Set color to gray if the task is completed
+        }
+        
+        switch task.priority {
+        case 5:
+            return .red
+        case 4:
+            return .orange
+        case 3:
+            return .yellow
+        case 2:
+            return .mint
+        case 1:
+            return .green
+        default:
+            return .indigo // Default color if priority is not within 1 to 5
+        }
+    }}
 
 // Custom DateFormatter
 extension DateFormatter {
@@ -78,16 +99,6 @@ extension DateFormatter {
         return formatter
     }()
 }
-
-//struct DayTaskView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            DayTaskView(date: Date()).environmentObject(AuthViewModel())
-//        }
-//    }
-//    
-//    
-//}
 
 #Preview {
     DayTaskView(date: Date()).environmentObject(AuthViewModel())

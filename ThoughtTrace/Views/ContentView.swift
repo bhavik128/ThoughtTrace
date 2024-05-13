@@ -183,5 +183,5 @@ struct TaskRowView: View {
     }
 }
 #Preview {
-    ContentView().environmentObject(AuthViewModel()).environmentObject(ToastViewModel())
+    ContentView().environmentObject(AuthViewModel()).environmentObject(ToastViewModel()).environmentObject(EditTaskViewModel())
 }
