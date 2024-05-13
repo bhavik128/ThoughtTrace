@@ -20,6 +20,7 @@ class DayTaskViewModel: ObservableObject {
         db.collection("tasks")
             .whereField("dueDate", isGreaterThanOrEqualTo: startOfDay)
             .whereField("dueDate", isLessThan: endOfDay)
+            .order(by: "priority", descending: true)
             .addSnapshotListener { querySnapshot, error in
                 if let querySnapshot = querySnapshot {
                     self.tasks = querySnapshot.documents.compactMap { document -> ToDoTaskModel? in

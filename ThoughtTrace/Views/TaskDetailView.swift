@@ -12,6 +12,7 @@ struct ToDoTaskDetailView: View {
     var taskId: String
     @State private var showAlert = false
     @Environment(\.presentationMode) var presentationMode
+    @State private var isEditTaskViewPresented = false
     
     var body: some View {
         NavigationView {
@@ -33,6 +34,11 @@ struct ToDoTaskDetailView: View {
                 },
                 secondaryButton: .cancel()
             )
+        }
+        .sheet(isPresented: $isEditTaskViewPresented) {
+            if let task = viewModel.task {
+                EditTaskView(task: task) 
+            }
         }
     }
     
@@ -73,8 +79,9 @@ struct ToDoTaskDetailView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 38, height: 38)
                             
-                        // change to correct location/sheet
-                        NavigationLink(destination: ContentView()) {
+                        Button(action: {
+                            isEditTaskViewPresented = true
+                        }) {
                             Text("Edit Task")
                                 .font(.subheadline)
                                 .foregroundStyle(.indigo)
@@ -150,6 +157,8 @@ struct ToDoTaskDetailView: View {
         }
     }
 
+
+
 }
 
 extension Date {
@@ -194,7 +203,7 @@ struct ToDoTaskDetailView_Previews: PreviewProvider {
         )
         
         let viewModel = ToDoTaskDetailViewModel()
-        viewModel.task = sampleTask // Set the task directly for the preview
+        viewModel.task = sampleTask
         return viewModel
     }
 }
