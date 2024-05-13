@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
+    
+    @StateObject var settingsViewModel = SettingsViewModel()
 
     var body: some View {
         NavigationView {
@@ -20,7 +22,7 @@ struct SettingsView: View {
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(width: 72, height: 72)
-                            .background(Color(.systemBlue))
+                            .background(.indigo)
                             .clipShape(Circle())
 
                         VStack(alignment: .leading, spacing: 4) {
@@ -36,7 +38,9 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("Account")) {
-                    Button {} label: {
+                    Button {
+                        settingsViewModel.showChangePassword.toggle()
+                    } label: {
                         HStack {
                             Image(systemName: "key.fill")
                                 .foregroundColor(.blue)
@@ -56,15 +60,6 @@ struct SettingsView: View {
                     }
                 }
 
-//                Section(header: Text("Preferences")) {
-//                    Toggle(isOn: $toggleState) {
-//                        HStack {
-//                            Image(systemName: "moon.fill")
-//                                .foregroundColor(.purple)
-//                            Text("Dark Mode")
-//                        }
-//                    }
-//                }
             }
             .navigationBarTitleDisplayMode(.inline)
             .listStyle(InsetGroupedListStyle())
@@ -77,10 +72,13 @@ struct SettingsView: View {
                     }
                 }
             }
+            .sheet(isPresented: $settingsViewModel.showChangePassword) {
+                ChangePasswordView()
+            }
         }
     }
 }
 
 #Preview {
-    SettingsView().environmentObject(AuthViewModel())
+    SettingsView().environmentObject(AuthViewModel()).environmentObject(ToastViewModel())
 }

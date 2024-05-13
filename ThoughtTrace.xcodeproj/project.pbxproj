@@ -31,6 +31,8 @@
 		2ECC78E12BEE509C00C8ED1A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2ECC78E02BEE509C00C8ED1A /* FirebaseFirestore */; };
 		2ECC78E32BEE509C00C8ED1A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2ECC78E22BEE509C00C8ED1A /* FirebaseFirestoreSwift */; };
 		2ECC78E72BEE526600C8ED1A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC78E62BEE526600C8ED1A /* SettingsView.swift */; };
+		2EE3864F2BF0A15D00EA2632 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE3864E2BF0A15D00EA2632 /* ChangePasswordView.swift */; };
+		2EE386512BF0AE9C00EA2632 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE386502BF0AE9C00EA2632 /* SettingsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		2EBB62C82BE877EB0003A7DF /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2EBB62CA2BE882220003A7DF /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		2ECC78E62BEE526600C8ED1A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2EE3864E2BF0A15D00EA2632 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		2EE386502BF0AE9C00EA2632 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,13 +76,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0525179D2BEFAA5C00926AEF /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		2E0640592BE7BF22001EE1EE /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +87,7 @@
 				052517952BEFA84600926AEF /* TaskListView.swift */,
 				052517972BEFA89200926AEF /* AddTaskView.swift */,
 				052517992BEFA8A000926AEF /* CalendarView.swift */,
+				2EE3864E2BF0A15D00EA2632 /* ChangePasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -101,6 +99,7 @@
 				2E0640632BE7CE38001EE1EE /* AuthViewModel.swift */,
 				2EB7C9C02BE9E45100EB1443 /* ToastViewModel.swift */,
 				052517912BEFA79300926AEF /* QuoteViewModel.swift */,
+				2EE386502BF0AE9C00EA2632 /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -143,7 +142,6 @@
 		2E6F61E52BE25D050022ACE0 /* ThoughtTrace */ = {
 			isa = PBXGroup;
 			children = (
-				0525179D2BEFAA5C00926AEF /* Models */,
 				2E06405C2BE7BF40001EE1EE /* App */,
 				2E06405B2BE7BF38001EE1EE /* Models */,
 				2E06405A2BE7BF2C001EE1EE /* ViewModels */,
@@ -253,6 +251,8 @@
 				052517962BEFA84600926AEF /* TaskListView.swift in Sources */,
 				2E0640642BE7CE38001EE1EE /* AuthViewModel.swift in Sources */,
 				0525179A2BEFA8A000926AEF /* CalendarView.swift in Sources */,
+				2EE3864F2BF0A15D00EA2632 /* ChangePasswordView.swift in Sources */,
+				2EE386512BF0AE9C00EA2632 /* SettingsViewModel.swift in Sources */,
 				2E0640622BE7CB66001EE1EE /* InputFieldViewModel.swift in Sources */,
 				2ECC78E72BEE526600C8ED1A /* SettingsView.swift in Sources */,
 				2EBB62CB2BE882220003A7DF /* SignUpView.swift in Sources */,

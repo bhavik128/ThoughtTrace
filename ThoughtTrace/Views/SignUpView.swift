@@ -12,16 +12,16 @@ struct SignUpView: View {
     @EnvironmentObject var toastViewModel: ToastViewModel
     @Environment(\.dismiss) var dismiss
 
-    @StateObject var nameFieldViewModel = InputFieldViewModel(
+    @StateObject private var nameFieldViewModel = InputFieldViewModel(
         text: "", title: "Name", placeholder: "Enter Name", isSecureField: false
     )
-    @StateObject var emailFieldViewModel = InputFieldViewModel(
+    @StateObject private var emailFieldViewModel = InputFieldViewModel(
         text: "", title: "Email", placeholder: "Enter Email", isSecureField: false
     )
-    @StateObject var passwordFieldViewModel = InputFieldViewModel(
+    @StateObject private var passwordFieldViewModel = InputFieldViewModel(
         text: "", title: "Password", placeholder: "Enter Password", isSecureField: true
     )
-    @StateObject var confirmPasswordFieldViewModel = InputFieldViewModel(
+    @StateObject private var confirmPasswordFieldViewModel = InputFieldViewModel(
         text: "", title: "Confirm Password", placeholder: "Confirm Password", isSecureField: true
     )
 
@@ -62,7 +62,7 @@ struct SignUpView: View {
                 .foregroundColor(.white)
                 .frame(width: UIScreen.main.bounds.width - 32, height: 48)
             }
-            .background(.blue)
+            .background(.indigo)
             .cornerRadius(10)
             .padding(.top, 20)
             .disabled(!isFormValid)
@@ -74,8 +74,8 @@ struct SignUpView: View {
                 dismiss()
             } label: {
                 HStack {
-                    Text("Already have an account?")
-                    Text("Sign In").bold()
+                    Text("Already have an account?").tint(.indigo)
+                    Text("Sign In").bold().tint(.indigo)
                 }
             }
         }
