@@ -14,6 +14,7 @@ class LoadTasksViewModel: ObservableObject {
     func fetchTasks() {
         db.collection("tasks")
             .whereField("status", isNotEqualTo: TaskStatus.completed.rawValue)
+            .order(by: "priority", descending: true)
             .order(by: "dueDate")
             .addSnapshotListener { (querySnapshot, error) in
                 if let querySnapshot = querySnapshot {
