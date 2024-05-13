@@ -23,13 +23,15 @@ struct ToDoTask: Identifiable, Codable {
     var status: TaskStatus
     var comments: [String]
 
-    init(title: String, description: String, dateCreated: Date = Date(), dueDate: Date, status: TaskStatus = .toDo, priority: Int = 1) {
+    init(title: String, description: String, dateCreated: Date = Date(), dueDate: Date, status: TaskStatus = .toDo, priority: Int = 1, comments: [String] = []) {
         self.title = title
         self.description = description
         self.dateCreated = dateCreated
         self.dueDate = dueDate
         self.status = status
         self.priority = priority
-        self.comments = []
+        self.comments = comments
     }
+    
+    
 }
