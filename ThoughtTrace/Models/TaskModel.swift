@@ -23,7 +23,7 @@ struct ToDoTaskModel: Identifiable, Codable {
     var status: TaskStatus
     var comments: [String]
 
-    init(id: String, title: String, dateCreated: Date = Date(), priority: Int, dueDate: Date, description: String? = nil, status: TaskStatus = .toDo, comments: [String] = []) {
+    init(id: String, title: String, dateCreated: Date = Date(), dueDate: Date, description: String? = nil, status: TaskStatus = .toDo, priority: Int, comments: [String] = []) {
         self.id = id
         self.title = title
         self.dateCreated = dateCreated

@@ -13,9 +13,9 @@ class AddTaskViewModel: ObservableObject {
     
     private var db = Firestore.firestore()
     
-    func addTask(title: String, dueDate: Date, description: String?, status: TaskStatus, completion: @escaping () -> Void) {
+    func addTask(title: String, dueDate: Date, description: String?, status: TaskStatus, priority: Int, comments: [String], completion: @escaping () -> Void) {
         let taskId = UUID().uuidString
-        let newTask = ToDoTaskModel(id: taskId, title: title, dateCreated: Date(), dueDate: dueDate, description: description, status: status)
+        let newTask = ToDoTaskModel(id: taskId, title: title, dateCreated: Date(), dueDate: dueDate, description: description, status: status, priority: priority, comments: comments)
         
         let documentReference = db.collection("tasks").document(taskId)
 

@@ -7,6 +7,8 @@ struct AddTaskView: View {
     @State private var dueDate: Date = Date()
     @State private var description: String = ""
     @State private var status: TaskStatus = .toDo
+    @State private var priority: Int = 1
+    @State private var comments: String = ""
     @State private var shouldNavigateToTaskDetail = false
 
     var body: some View {
@@ -34,9 +36,22 @@ struct AddTaskView: View {
                         }
                         
                         TextEditor(text: $description)
-                            .frame(height: 100)
+                            .frame(height: 40)
                             .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                     }
+                    
+                    Picker("Priority", selection: $priority) {
+                        ForEach(1...5, id: \.self) { index in
+                            Text("\(index)").tag(index)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                                        
+                    Text("Comments")
+                        .bold()
+                    TextEditor(text: $comments)
+                        .frame(height: 40)
+                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                 }
 //                .padding(.vertical, 8)
                 
@@ -47,10 +62,11 @@ struct AddTaskView: View {
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
+                    
                 }
                 
                 Button("Add Task") {
-                    addTaskViewModel.addTask(title: title, dueDate: dueDate, description: description.isEmpty ? nil : description, status: status) {
+                    addTaskViewModel.addTask(title: title, dueDate: dueDate, description: description.isEmpty ? nil : description, status: status, priority: priority, comments: comments.isEmpty ? [] : [comments]) {
                         self.shouldNavigateToTaskDetail = true
                     }
                 }
@@ -68,10 +84,10 @@ struct AddTaskView: View {
                                     EmptyView()
                                 })
             }
-            .navigationDestination(isPresented: $shouldNavigateToTaskDetail) {
-                
-                TaskDetailView()
-            }
+//            .navigationDestination(isPresented: $shouldNavigateToTaskDetail) {
+//                
+//                ToDoTaskDetailView(currentToDoTask: <#ToDoTaskModel#>)
+//            }
             .padding(.top, 20) 
             .navigationBarTitle("Add New Task", displayMode: .inline)
 //            .navigationBarItems(leading: Button("Cancel") {
