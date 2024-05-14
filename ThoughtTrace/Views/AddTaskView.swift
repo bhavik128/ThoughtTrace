@@ -30,10 +30,12 @@ struct AddTaskView: View {
                         }
 
                         TextEditor(text: $addTaskViewModel.description)
-                            .frame(height: 40)
+                            .frame(height: 30)
                             .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                     }
-
+                    
+                    Text("Set Priority")
+                        .bold()
                     Picker("Priority", selection: $addTaskViewModel.priority) {
                         ForEach(1 ... 5, id: \.self) { index in
                             Text("\(index)").tag(index)
@@ -44,7 +46,7 @@ struct AddTaskView: View {
                     Text("Comments")
                         .bold()
                     TextEditor(text: $addTaskViewModel.comments)
-                        .frame(height: 40)
+                        .frame(height: 35)
                         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                 }
                 //                .padding(.vertical, 8)
