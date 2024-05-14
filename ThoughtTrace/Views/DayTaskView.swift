@@ -49,7 +49,7 @@ struct DayTaskView: View {
                     .padding(.bottom, 20)
                 }
                 .onAppear {
-                    viewModel.fetchTasks(for: date)
+                    viewModel.fetchTasks(for: date, authorId: authViewModel.userSession?.uid ?? "")
                 }
             }
             .padding(.top, 25)
