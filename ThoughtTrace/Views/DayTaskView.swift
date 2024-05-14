@@ -4,6 +4,7 @@ struct DayTaskView: View {
     var date: Date
     @EnvironmentObject var authViewModel: AuthViewModel
     @ObservedObject private var viewModel = DayTaskViewModel()
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationView {
@@ -54,11 +55,12 @@ struct DayTaskView: View {
             .padding(.top, 25)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink {
-                        ContentView()
+                    Button {
+                        dismiss()
                     } label: {
                         Image(systemName: "house.fill")
                             .imageScale(.large)
+                            .tint(.indigo)
                     }
                 }
             }
@@ -66,7 +68,7 @@ struct DayTaskView: View {
         }
         .navigationBarHidden(true)
     }
-    
+
     private var sortedTasks: [ToDoTaskModel] {
         viewModel.tasks.sorted {
             if $0.status == .completed && $1.status != .completed {

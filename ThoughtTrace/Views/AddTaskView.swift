@@ -30,10 +30,10 @@ struct AddTaskView: View {
                         }
 
                         TextEditor(text: $addTaskViewModel.description)
-                            .frame(height: 30)
+                            .frame(height: 100)
                             .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                     }
-                    
+
                     Text("Set Priority")
                         .bold()
                     Picker("Priority", selection: $addTaskViewModel.priority) {
@@ -46,10 +46,9 @@ struct AddTaskView: View {
                     Text("Comments")
                         .bold()
                     TextEditor(text: $addTaskViewModel.comments)
-                        .frame(height: 35)
+                        .frame(height: 100)
                         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                 }
-                //                .padding(.vertical, 8)
 
                 Section(header: CustomHeaderView(text: "Status")) {
                     Picker("Status", selection: $addTaskViewModel.status) {
@@ -101,11 +100,12 @@ struct AddTaskView: View {
             .navigationTitle("Add New Task")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink {
-                        ContentView()
+                    Button {
+                        dismiss()
                     } label: {
                         Image(systemName: "house.fill")
                             .imageScale(.large)
+                            .tint(.indigo)
                     }
                 }
             }

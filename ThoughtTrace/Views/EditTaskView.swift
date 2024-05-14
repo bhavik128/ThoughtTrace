@@ -56,7 +56,7 @@ struct EditTaskView: View {
                         }
 
                         TextEditor(text: $description)
-                            .frame(height: 40)
+                            .frame(height: 100)
                             .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                     }
 
@@ -70,7 +70,7 @@ struct EditTaskView: View {
                     Text("Comments")
                         .bold()
                     TextEditor(text: $comments)
-                        .frame(height: 40)
+                        .frame(height: 100)
                         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                 }
 
