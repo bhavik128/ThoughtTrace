@@ -53,7 +53,7 @@ struct ContentView: View {
                                 NavigationLink(destination: AddTaskView().environmentObject(addTaskViewModel)) {
                                     Text("Add New Task")
                                         .font(.title3)
-                                        .foregroundColor(.purple)
+                                        .foregroundColor(.indigo)
                                         .bold()
                                 }
                                 
@@ -69,7 +69,7 @@ struct ContentView: View {
                                 NavigationLink(destination: CalendarView()) {
                                     Text("View Calendar")
                                         .font(.title3)
-                                        .foregroundColor(.purple)
+                                        .foregroundColor(.indigo)
                                         .bold()
                                 }
                                 
@@ -125,6 +125,9 @@ struct ContentView: View {
                                     .tint(.indigo)
                             }
                         }
+                    }
+                    .task {
+                        await taskViewModel.fetchTasks(authorId: authViewModel.userSession?.uid ?? "")
                     }
                 } else {
                     SignInView()
@@ -183,5 +186,5 @@ struct TaskRowView: View {
     }
 }
 #Preview {
-    ContentView().environmentObject(AuthViewModel()).environmentObject(ToastViewModel()).environmentObject(EditTaskViewModel())
+    ContentView().environmentObject(AuthViewModel()).environmentObject(ToastViewModel()).environmentObject(AddTaskViewModel()).environmentObject(LoadTasksViewModel()).environmentObject(QuoteViewModel())
 }

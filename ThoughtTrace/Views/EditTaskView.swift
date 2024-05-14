@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct EditTaskView: View {
-//    @EnvironmentObject var editTaskViewModel: EditTaskViewModel
-    @ObservedObject private var editTaskViewModel = EditTaskViewModel()
+    @StateObject private var editTaskViewModel = EditTaskViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
 
     var task: ToDoTaskModel
@@ -86,7 +86,8 @@ struct EditTaskView: View {
                         description: description.isEmpty ? nil : description,
                         status: status,
                         priority: priority,
-                        comments: comments.components(separatedBy: .newlines)
+                        comments: comments.components(separatedBy: .newlines),
+                        authorId: authViewModel.userSession?.uid ?? ""
                     )
                     
                     editTaskViewModel.updateTask(task: updatedTask) { success in
@@ -130,7 +131,8 @@ struct EditTaskView_Previews: PreviewProvider {
             description: "Sample description",
             status: .toDo,
             priority: 3,
-            comments: ["Comment 1", "Comment 2"]
+            comments: ["Comment 1", "Comment 2"],
+            authorId: ""
         )
         
         return EditTaskView(task: sampleTask).environmentObject(EditTaskViewModel())

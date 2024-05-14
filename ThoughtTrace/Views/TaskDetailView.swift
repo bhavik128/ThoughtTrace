@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ToDoTaskDetailView: View {
-    @ObservedObject var viewModel = ToDoTaskDetailViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @StateObject var viewModel = ToDoTaskDetailViewModel()
     var taskId: String
     @State private var showAlert = false
     @Environment(\.presentationMode) var presentationMode
@@ -30,7 +31,9 @@ struct ToDoTaskDetailView: View {
                 title: Text("Delete Task"),
                 message: Text("Are you sure you want to delete this task?"),
                 primaryButton: .destructive(Text("Delete")) {
-                    deleteTask()
+                    Task {
+                        await deleteTask()
+                    }
                 },
                 secondaryButton: .cancel()
             )
@@ -150,15 +153,20 @@ struct ToDoTaskDetailView: View {
             
     }
     
-    private func deleteTask() {
-        viewModel.deleteTask(taskId: taskId)
-        DispatchQueue.main.async {
-            presentationMode.wrappedValue.dismiss()
-        }
+    private func deleteTask() async {
+            viewModel.deleteTask(taskId: taskId)
+            
+            var tasks = authViewModel.currentUser?.tasks ?? []
+            
+            if let indexId = tasks.firstIndex(of: taskId) {
+                tasks.remove(at: indexId)
+            }
+            
+            await authViewModel.saveUser(user: UserModel(id: authViewModel.userSession?.uid ?? "", fullname: authViewModel.currentUser?.fullname ?? "", email: authViewModel.currentUser?.email ?? "", tasks: tasks))
+            DispatchQueue.main.async {
+                presentationMode.wrappedValue.dismiss()
+            }
     }
-
-
-
 }
 
 extension Date {
@@ -199,7 +207,8 @@ struct ToDoTaskDetailView_Previews: PreviewProvider {
             description: "Finish the SwiftUI view for the task detail and integrate it with the existing app.",
             status: .doing,
             priority: 1,
-            comments: ["Review the design specs", "Check integration points", "Discuss UI changes with the team"]
+            comments: ["Review the design specs", "Check integration points", "Discuss UI changes with the team"],
+            authorId: ""
         )
         
         let viewModel = ToDoTaskDetailViewModel()
