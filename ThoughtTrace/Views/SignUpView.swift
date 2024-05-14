@@ -28,6 +28,11 @@ struct SignUpView: View {
     var body: some View {
         VStack {
             VStack(spacing: 20) {
+                Image("logo")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 300, height: 200)
+
                 InputFieldView(
                     viewModel: nameFieldViewModel
                 )

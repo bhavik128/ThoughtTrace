@@ -22,6 +22,12 @@ struct SignInView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Image("logo")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 300, height: 200)
+                    .padding(.vertical, 20)
+
                 VStack(spacing: 20) {
                     InputFieldView(
                         viewModel: emailFieldViewModel
