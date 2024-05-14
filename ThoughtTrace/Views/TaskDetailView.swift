@@ -40,7 +40,7 @@ struct ToDoTaskDetailView: View {
         }
         .sheet(isPresented: $isEditTaskViewPresented) {
             if let task = viewModel.task {
-                EditTaskView(task: task)
+                EditTaskView(task: task, taskId: taskId, updateView: viewModel.fetchTaskById)
             }
         }
     }

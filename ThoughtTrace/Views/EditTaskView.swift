@@ -15,8 +15,10 @@ struct EditTaskView: View {
     @State private var comments: String
     @State private var showingUpdateAlert = false
     @State private var updateSuccess = false
+    @State private var updateView: (String) -> Void
+    @State private var taskId: String
 
-    init(task: ToDoTaskModel) {
+    init(task: ToDoTaskModel, taskId: String, updateView: @escaping (String) -> Void) {
         self.task = task
         self._title = State(initialValue: task.title)
         self._dueDate = State(initialValue: task.dueDate)
@@ -24,6 +26,9 @@ struct EditTaskView: View {
         self._status = State(initialValue: task.status)
         self._priority = State(initialValue: task.priority)
         self._comments = State(initialValue: task.comments.joined(separator: "\n"))
+
+        self.taskId = taskId
+        self.updateView = updateView
     }
 
     var body: some View {
@@ -117,6 +122,7 @@ struct EditTaskView: View {
                     dismissButton: .default(Text("OK")) {
                         if updateSuccess {
                             presentationMode.wrappedValue.dismiss()
+                            updateView(taskId)
                         }
                     }
                 )
@@ -126,6 +132,8 @@ struct EditTaskView: View {
 }
 
 struct EditTaskView_Previews: PreviewProvider {
+    static func updateView(taskId: String) {}
+
     static var previews: some View {
         let sampleTask = ToDoTaskModel(
             id: "sampleTaskID",
@@ -138,6 +146,6 @@ struct EditTaskView_Previews: PreviewProvider {
             authorId: ""
         )
 
-        return EditTaskView(task: sampleTask).environmentObject(EditTaskViewModel())
+        return EditTaskView(task: sampleTask, taskId: "", updateView: updateView).environmentObject(EditTaskViewModel())
     }
 }
