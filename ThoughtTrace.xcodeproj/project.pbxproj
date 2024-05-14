@@ -27,6 +27,7 @@
 		2E0640622BE7CB66001EE1EE /* InputFieldViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0640612BE7CB66001EE1EE /* InputFieldViewModel.swift */; };
 		2E0640642BE7CE38001EE1EE /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0640632BE7CE38001EE1EE /* AuthViewModel.swift */; };
 		2E0FED122BE8E2A7003A6846 /* SimpleToast in Frameworks */ = {isa = PBXBuildFile; productRef = 2E0FED112BE8E2A7003A6846 /* SimpleToast */; };
+		2E578B7D2BF30C9F005841AF /* LaunchScreenView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E578B7C2BF30C9F005841AF /* LaunchScreenView.storyboard */; };
 		2E6F61E72BE25D050022ACE0 /* ThoughtTraceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F61E62BE25D050022ACE0 /* ThoughtTraceApp.swift */; };
 		2E6F61E92BE25D060022ACE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6F61E82BE25D060022ACE0 /* ContentView.swift */; };
 		2E6F61EB2BE25D070022ACE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6F61EA2BE25D070022ACE0 /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 		2E06405D2BE7C13A001EE1EE /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		2E0640612BE7CB66001EE1EE /* InputFieldViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldViewModel.swift; sourceTree = "<group>"; };
 		2E0640632BE7CE38001EE1EE /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		2E578B7C2BF30C9F005841AF /* LaunchScreenView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreenView.storyboard; sourceTree = "<group>"; };
 		2E6F61E32BE25D050022ACE0 /* ThoughtTrace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThoughtTrace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6F61E62BE25D050022ACE0 /* ThoughtTraceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtTraceApp.swift; sourceTree = "<group>"; };
 		2E6F61E82BE25D060022ACE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				054E7E412BEFC04A00607B4B /* CustomHeaderView.swift */,
 				058C0C862BF0E1DD0025B702 /* TaskDetailView.swift */,
 				0546027B2BF2827C00A9328E /* EditTaskView.swift */,
+				2E578B7C2BF30C9F005841AF /* LaunchScreenView.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			files = (
 				2E6F61F72BE25DBF0022ACE0 /* .gitignore in Resources */,
 				2E6F61F52BE25D8C0022ACE0 /* README.md in Resources */,
+				2E578B7D2BF30C9F005841AF /* LaunchScreenView.storyboard in Resources */,
 				2E0640582BE7BCF9001EE1EE /* GoogleService-Info.plist in Resources */,
 				2E6F61EE2BE25D070022ACE0 /* Preview Assets.xcassets in Resources */,
 				2E6F61EB2BE25D070022ACE0 /* Assets.xcassets in Resources */,
@@ -427,6 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -437,6 +442,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreenView.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -458,6 +464,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -468,6 +475,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreenView.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
