@@ -110,7 +110,9 @@ struct AddTaskView: View {
             .alert(
                 "Task Added", isPresented: $addTaskViewModel.taskAddedSuccess,
                 actions: {
-                    Button("OK", role: .cancel) {}
+                    Button("OK", role: .cancel) {
+                        dismiss()
+                    }
                 },
                 message: {
                     Text("Your task has been successfully added.")
