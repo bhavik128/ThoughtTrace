@@ -65,7 +65,8 @@ class AuthViewModel: ObservableObject {
     func signUp(fullname: String, email: String, password: String) async {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            await saveUser(user: UserModel(id: result.user.uid, fullname: fullname, email: email, tasks: []))
+            await saveUser(
+                user: UserModel(id: result.user.uid, fullname: fullname, email: email, tasks: []))
         } catch {
             if let error = error as NSError? {
                 let code = AuthErrorCode.Code(rawValue: error.code)
@@ -85,7 +86,8 @@ class AuthViewModel: ObservableObject {
     }
 
     func saveUser(user: UserModel) async {
-        try? Firestore.firestore().collection("users").document(user.id).setData(from: user, merge: true)
+        try? Firestore.firestore().collection("users").document(user.id).setData(
+            from: user, merge: true)
         await fetchUser()
     }
 

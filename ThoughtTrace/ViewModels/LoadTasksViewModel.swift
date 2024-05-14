@@ -1,6 +1,6 @@
+import Combine
 import Firebase
 import FirebaseFirestore
-import Combine
 import Foundation
 
 class LoadTasksViewModel: ObservableObject {
@@ -13,7 +13,7 @@ class LoadTasksViewModel: ObservableObject {
             .whereField("authorId", isEqualTo: authorId)
             .order(by: "priority", descending: true)
             .order(by: "dueDate")
-            .addSnapshotListener { (querySnapshot, error) in
+            .addSnapshotListener { querySnapshot, error in
                 if let querySnapshot = querySnapshot {
                     self.tasks = querySnapshot.documents.compactMap { document in
                         try? document.data(as: ToDoTaskModel.self)

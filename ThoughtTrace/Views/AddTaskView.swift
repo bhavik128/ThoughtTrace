@@ -18,7 +18,7 @@ struct AddTaskView: View {
                                 .stroke(Color.indigo, lineWidth: 2)
                         )
                     DatePicker("Due Date", selection: $addTaskViewModel.dueDate, displayedComponents: .date)
-                    
+
                     Text("Task Description")
                         .bold()
                     ZStack(alignment: .topLeading) {
@@ -28,27 +28,27 @@ struct AddTaskView: View {
                                 .padding(.vertical, 8)
                                 .padding(.horizontal, 5)
                         }
-                        
+
                         TextEditor(text: $addTaskViewModel.description)
                             .frame(height: 40)
                             .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                     }
-                    
+
                     Picker("Priority", selection: $addTaskViewModel.priority) {
-                        ForEach(1...5, id: \.self) { index in
+                        ForEach(1 ... 5, id: \.self) { index in
                             Text("\(index)").tag(index)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                                        
+
                     Text("Comments")
                         .bold()
                     TextEditor(text: $addTaskViewModel.comments)
                         .frame(height: 40)
                         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                 }
-//                .padding(.vertical, 8)
-                
+                //                .padding(.vertical, 8)
+
                 Section(header: CustomHeaderView(text: "Status")) {
                     Picker("Status", selection: $addTaskViewModel.status) {
                         ForEach(TaskStatus.allCases, id: \.self) { status in
@@ -56,19 +56,25 @@ struct AddTaskView: View {
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                    
                 }
-                
+
                 Button("Add Task") {
                     Task {
-                        let taskId = addTaskViewModel.addTask(title: addTaskViewModel.title, dueDate: addTaskViewModel.dueDate, authorId: authViewModel.userSession?.uid ?? "" ,description: addTaskViewModel.description.isEmpty ? nil : addTaskViewModel.description, status: addTaskViewModel.status, priority: addTaskViewModel.priority, comments: addTaskViewModel.comments.isEmpty ? [] : [addTaskViewModel.comments]) { _ in
+                        let taskId = addTaskViewModel.addTask(
+                            title: addTaskViewModel.title, dueDate: addTaskViewModel.dueDate,
+                            authorId: authViewModel.userSession?.uid ?? "",
+                            description: addTaskViewModel.description.isEmpty
+                                ? nil : addTaskViewModel.description, status: addTaskViewModel.status,
+                            priority: addTaskViewModel.priority,
+                            comments: addTaskViewModel.comments.isEmpty ? [] : [addTaskViewModel.comments])
+                        { _ in
                             addTaskViewModel.taskAddedSuccess = true
                         }
-                        
+
                         var tasks = authViewModel.currentUser?.tasks ?? []
-                        
+
                         tasks.append(taskId)
-                        
+
                         await authViewModel.saveUser(
                             user: UserModel(
                                 id: authViewModel.userSession?.uid ?? "",
@@ -83,13 +89,12 @@ struct AddTaskView: View {
                 .foregroundColor(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.horizontal)
-                
+
                 if addTaskViewModel.taskAddedSuccess {
                     Text("Task successfully added!")
                         .font(.headline)
                         .foregroundColor(.green)
                 }
-                
             }
             .navigationTitle("Add New Task")
             .toolbar {
@@ -102,11 +107,14 @@ struct AddTaskView: View {
                     }
                 }
             }
-            .alert("Task Added", isPresented: $addTaskViewModel.taskAddedSuccess, actions: {
-                Button("OK", role: .cancel) { }
-            }, message: {
-                Text("Your task has been successfully added.")
-            })
+            .alert(
+                "Task Added", isPresented: $addTaskViewModel.taskAddedSuccess,
+                actions: {
+                    Button("OK", role: .cancel) {}
+                },
+                message: {
+                    Text("Your task has been successfully added.")
+                })
         }
         .navigationBarHidden(true)
     }

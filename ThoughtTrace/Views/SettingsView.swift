@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    
+
     @StateObject var settingsViewModel = SettingsViewModel()
 
     var body: some View {
@@ -59,7 +59,6 @@ struct SettingsView: View {
                         }
                     }
                 }
-
             }
             .navigationBarTitleDisplayMode(.inline)
             .listStyle(InsetGroupedListStyle())
