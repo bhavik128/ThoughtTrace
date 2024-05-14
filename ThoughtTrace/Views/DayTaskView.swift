@@ -16,7 +16,7 @@ struct DayTaskView: View {
 
                 ScrollView {
                     VStack(alignment: .leading) {
-                        ForEach(viewModel.tasks, id: \.id) { task in
+                        ForEach(sortedTasks, id: \.id) { task in
                             NavigationLink(destination: ToDoTaskDetailView(taskId: task.id)) {
                                 HStack {
                                     Text(task.title)
@@ -65,6 +65,17 @@ struct DayTaskView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .navigationBarHidden(true)
+    }
+    
+    private var sortedTasks: [ToDoTaskModel] {
+        viewModel.tasks.sorted {
+            if $0.status == .completed && $1.status != .completed {
+                return false
+            } else if $0.status != .completed && $1.status == .completed {
+                return true
+            }
+            return $0.priority > $1.priority
+        }
     }
 
     private func priorityColor(for task: ToDoTaskModel) -> Color {
