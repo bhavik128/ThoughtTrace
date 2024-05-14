@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    
+
     @StateObject private var quoteViewModel = QuoteViewModel()
     @StateObject private var taskViewModel = LoadTasksViewModel()
     @StateObject private var addTaskViewModel = AddTaskViewModel()
-    
+
     var body: some View {
         NavigationView {
             Group {
@@ -23,14 +23,14 @@ struct ContentView: View {
                             .font(.largeTitle)
                             .bold()
                             .foregroundColor(.indigo)
-//                        Spacer()
-                        
+                        //                        Spacer()
+
                         VStack(alignment: .center) {
                             Text("Upcoming Tasks")
                                 .font(.title2)
                                 .foregroundColor(.indigo)
                                 .bold()
-                            
+
                             ScrollView {
                                 LazyVStack {
                                     ForEach(taskViewModel.tasks) { task in
@@ -47,32 +47,32 @@ struct ContentView: View {
                         .background(.indigo.opacity(0.3))
                         .cornerRadius(25)
                         Spacer()
-                        
+
                         HStack {
                             VStack {
                                 NavigationLink(destination: AddTaskView().environmentObject(addTaskViewModel)) {
                                     Text("Add New Task")
                                         .font(.title3)
-                                        .foregroundColor(.purple)
+                                        .foregroundColor(.indigo)
                                         .bold()
                                 }
-                                
+
                                 Image("task")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 25, height: 25)
                             }
-                            
+
                             Spacer()
-                            
+
                             VStack {
                                 NavigationLink(destination: CalendarView()) {
                                     Text("View Calendar")
                                         .font(.title3)
-                                        .foregroundColor(.purple)
+                                        .foregroundColor(.indigo)
                                         .bold()
                                 }
-                                
+
                                 Image("calendar")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -80,15 +80,15 @@ struct ContentView: View {
                             }
                         }
                         .padding()
-                        
+
                         Spacer()
                         VStack {
                             if let quote = quoteViewModel.quote {
-                                ScrollView{
+                                ScrollView {
                                     Text("\"\(quote.q)\"")
                                         .italic()
                                         .padding(.bottom, 5)
-                                    
+
                                     Text("- \(quote.a)")
                                         .font(.caption)
                                         .padding([.bottom, .leading, .trailing])
@@ -97,22 +97,22 @@ struct ContentView: View {
                                 Text(errorMessage)
                                     .foregroundColor(.red)
                             }
-                            
+
                             if quoteViewModel.isLoading {
                                 ProgressView()
                             }
-                            
+
                             Button("Regenerate Quote") {
                                 quoteViewModel.fetchRandomQuote()
                             }
                             .padding(8)
-                            .font(.system(size:12))
+                            .font(.system(size: 12))
                             .frame(width: 150, height: 30)
                             .background(Color.indigo)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                         }
-//                        .padding()
+                        //                        .padding()
                     }
                     .padding()
                     .toolbar {
@@ -126,6 +126,9 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .task {
+                        await taskViewModel.fetchTasks(authorId: authViewModel.userSession?.uid ?? "")
+                    }
                 } else {
                     SignInView()
                 }
@@ -137,10 +140,10 @@ struct ContentView: View {
 
 struct TaskRowView: View {
     var task: ToDoTaskModel
-    
+
     var body: some View {
         let priorityColor: Color
-        
+
         switch task.priority {
         case 5:
             priorityColor = .red
@@ -155,7 +158,7 @@ struct TaskRowView: View {
         default:
             priorityColor = .indigo // Default color if priority is not within 1 to 5
         }
-        
+
         return HStack {
             Text(task.title)
                 .font(.title)
@@ -164,9 +167,9 @@ struct TaskRowView: View {
                 .lineLimit(1)
                 .padding(.vertical, 5)
                 .padding(.horizontal, 10)
-            
+
             Spacer()
-            
+
             Text(task.status.rawValue)
                 .font(.headline)
                 .foregroundColor(.yellow)
@@ -182,6 +185,9 @@ struct TaskRowView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
+
 #Preview {
-    ContentView().environmentObject(AuthViewModel()).environmentObject(ToastViewModel()).environmentObject(EditTaskViewModel())
+    ContentView().environmentObject(AuthViewModel()).environmentObject(ToastViewModel())
+        .environmentObject(AddTaskViewModel()).environmentObject(LoadTasksViewModel())
+        .environmentObject(QuoteViewModel())
 }

@@ -15,20 +15,21 @@ class QuoteViewModel: ObservableObject {
 
     init() {
         // default quote for when the app starts
-        self.quote = Quote(q: "The road to success is always under construction..",
-                           a: "Lily Tomlin")
+        self.quote = Quote(
+            q: "The road to success is always under construction..",
+            a: "Lily Tomlin")
     }
 
     func fetchRandomQuote() {
         isLoading = true
         errorMessage = nil
         guard let url = URL(string: "https://zenquotes.io/api/random") else {
-            self.errorMessage = "Invalid URL"
-            self.isLoading = false
+            errorMessage = "Invalid URL"
+            isLoading = false
             return
         }
 
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: url) { data, _, error in
             DispatchQueue.main.async {
                 self.isLoading = false
                 if let error = error {
@@ -37,7 +38,8 @@ class QuoteViewModel: ObservableObject {
                 }
                 guard let data = data,
                       let quoteArray = try? JSONDecoder().decode([Quote].self, from: data),
-                      let quote = quoteArray.first else {
+                      let quote = quoteArray.first
+                else {
                     self.errorMessage = "Failed to decode response"
                     return
                 }

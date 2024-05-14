@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		052517922BEFA79300926AEF /* QuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517912BEFA79300926AEF /* QuoteViewModel.swift */; };
 		052517942BEFA7D500926AEF /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517932BEFA7D500926AEF /* QuoteModel.swift */; };
-		052517962BEFA84600926AEF /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517952BEFA84600926AEF /* TaskListView.swift */; };
 		052517982BEFA89200926AEF /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517972BEFA89200926AEF /* AddTaskView.swift */; };
 		0525179A2BEFA8A000926AEF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517992BEFA8A000926AEF /* CalendarView.swift */; };
 		052517A32BEFB4A000926AEF /* DayTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052517A22BEFB4A000926AEF /* DayTaskView.swift */; };
@@ -48,7 +47,6 @@
 /* Begin PBXFileReference section */
 		052517912BEFA79300926AEF /* QuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewModel.swift; sourceTree = "<group>"; };
 		052517932BEFA7D500926AEF /* QuoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuoteModel.swift; path = ThoughtTrace/Models/QuoteModel.swift; sourceTree = SOURCE_ROOT; };
-		052517952BEFA84600926AEF /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
 		052517972BEFA89200926AEF /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		052517992BEFA8A000926AEF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		052517A22BEFB4A000926AEF /* DayTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTaskView.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				2EBB62C82BE877EB0003A7DF /* SignInView.swift */,
 				2EBB62CA2BE882220003A7DF /* SignUpView.swift */,
 				2ECC78E62BEE526600C8ED1A /* SettingsView.swift */,
-				052517952BEFA84600926AEF /* TaskListView.swift */,
 				052517972BEFA89200926AEF /* AddTaskView.swift */,
 				052517992BEFA8A000926AEF /* CalendarView.swift */,
 				2EE3864E2BF0A15D00EA2632 /* ChangePasswordView.swift */,
@@ -282,7 +279,6 @@
 				058C0C872BF0E1DD0025B702 /* TaskDetailView.swift in Sources */,
 				2EBB62C92BE877EB0003A7DF /* SignInView.swift in Sources */,
 				052517982BEFA89200926AEF /* AddTaskView.swift in Sources */,
-				052517962BEFA84600926AEF /* TaskListView.swift in Sources */,
 				058C0C892BF0E7A00025B702 /* DayTaskViewModel.swift in Sources */,
 				058C0C8B2BF0F6A40025B702 /* LoadTasksViewModel.swift in Sources */,
 				2E0640642BE7CE38001EE1EE /* AuthViewModel.swift in Sources */,

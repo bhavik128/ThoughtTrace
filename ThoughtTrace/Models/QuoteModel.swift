@@ -9,11 +9,11 @@ import Foundation
 
 struct Quote: Codable, Identifiable {
     let id = UUID()
-    let q: String  // Quote text
-    let a: String  // Author
+    let q: String // Quote text
+    let a: String // Author
 
     enum CodingKeys: String, CodingKey {
-        case q = "q"
-        case a = "a"
+        case q
+        case a
     }
 }

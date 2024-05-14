@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct EditTaskView: View {
-//    @EnvironmentObject var editTaskViewModel: EditTaskViewModel
-    @ObservedObject private var editTaskViewModel = EditTaskViewModel()
+    @StateObject private var editTaskViewModel = EditTaskViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
     @Environment(\.presentationMode) var presentationMode
 
     var task: ToDoTaskModel
@@ -39,7 +39,7 @@ struct EditTaskView: View {
                                 .stroke(Color.indigo, lineWidth: 2)
                         )
                     DatePicker("Due Date", selection: $dueDate, displayedComponents: .date)
-                    
+
                     Text("Task Description")
                         .bold()
                     ZStack(alignment: .topLeading) {
@@ -49,26 +49,26 @@ struct EditTaskView: View {
                                 .padding(.vertical, 8)
                                 .padding(.horizontal, 5)
                         }
-                        
+
                         TextEditor(text: $description)
                             .frame(height: 40)
                             .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                     }
-                    
+
                     Picker("Priority", selection: $priority) {
-                        ForEach(1...5, id: \.self) { index in
+                        ForEach(1 ... 5, id: \.self) { index in
                             Text("\(index)").tag(index)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                                        
+
                     Text("Comments")
                         .bold()
                     TextEditor(text: $comments)
                         .frame(height: 40)
                         .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
                 }
-                
+
                 Section(header: CustomHeaderView(text: "Status")) {
                     Picker("Status", selection: $status) {
                         ForEach(TaskStatus.allCases, id: \.self) { status in
@@ -77,7 +77,7 @@ struct EditTaskView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
-                
+
                 Button("Update Task") {
                     let updatedTask = ToDoTaskModel(
                         id: task.id,
@@ -86,9 +86,10 @@ struct EditTaskView: View {
                         description: description.isEmpty ? nil : description,
                         status: status,
                         priority: priority,
-                        comments: comments.components(separatedBy: .newlines)
+                        comments: comments.components(separatedBy: .newlines),
+                        authorId: authViewModel.userSession?.uid ?? ""
                     )
-                    
+
                     editTaskViewModel.updateTask(task: updatedTask) { success in
                         updateSuccess = success
                         showingUpdateAlert = true
@@ -103,20 +104,23 @@ struct EditTaskView: View {
                 .padding(.horizontal)
             }
             .navigationTitle("Edit Task")
-            .navigationBarItems(trailing: Button("Cancel") {
-                presentationMode.wrappedValue.dismiss()
-            })
+            .navigationBarItems(
+                trailing: Button("Cancel") {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            )
             .alert(isPresented: $showingUpdateAlert) {
-                  Alert(
-                      title: Text(updateSuccess ? "Success" : "Error"),
-                      message: Text(updateSuccess ? "Task has been successfully updated." : "Failed to update the task."),
-                      dismissButton: .default(Text("OK")) {
-                          if updateSuccess {
-                              presentationMode.wrappedValue.dismiss()
-                          }
-                      }
-                  )
-              }
+                Alert(
+                    title: Text(updateSuccess ? "Success" : "Error"),
+                    message: Text(
+                        updateSuccess ? "Task has been successfully updated." : "Failed to update the task."),
+                    dismissButton: .default(Text("OK")) {
+                        if updateSuccess {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                )
+            }
         }
     }
 }
@@ -130,9 +134,10 @@ struct EditTaskView_Previews: PreviewProvider {
             description: "Sample description",
             status: .toDo,
             priority: 3,
-            comments: ["Comment 1", "Comment 2"]
+            comments: ["Comment 1", "Comment 2"],
+            authorId: ""
         )
-        
+
         return EditTaskView(task: sampleTask).environmentObject(EditTaskViewModel())
     }
 }

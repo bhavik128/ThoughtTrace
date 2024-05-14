@@ -6,16 +6,14 @@ struct DayTaskView: View {
     @ObservedObject private var viewModel = DayTaskViewModel()
 
     var body: some View {
-
         NavigationView {
-            VStack{
-                
+            VStack {
                 Text("Tasks due on \(date, formatter: DateFormatter.taskDueDateFormatter)")
                     .font(.title)
                     .bold()
                     .foregroundColor(.indigo)
                 Spacer()
-                
+
                 ScrollView {
                     VStack(alignment: .leading) {
                         ForEach(viewModel.tasks, id: \.id) { task in
@@ -26,9 +24,9 @@ struct DayTaskView: View {
                                         .bold()
                                         .foregroundColor(.white)
                                         .lineLimit(1)
-                                    
+
                                     Spacer()
-                                    
+
                                     Text(task.status.rawValue)
                                         .font(.headline)
                                         .foregroundColor(.yellow)
@@ -68,12 +66,12 @@ struct DayTaskView: View {
         }
         .navigationBarHidden(true)
     }
-    
+
     private func priorityColor(for task: ToDoTaskModel) -> Color {
         if task.status == .completed {
             return .gray // Set color to gray if the task is completed
         }
-        
+
         switch task.priority {
         case 5:
             return .red
@@ -88,7 +86,8 @@ struct DayTaskView: View {
         default:
             return .indigo // Default color if priority is not within 1 to 5
         }
-    }}
+    }
+}
 
 // Custom DateFormatter
 extension DateFormatter {

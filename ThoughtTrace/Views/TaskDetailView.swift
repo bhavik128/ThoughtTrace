@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ToDoTaskDetailView: View {
-    @ObservedObject var viewModel = ToDoTaskDetailViewModel()
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @StateObject var viewModel = ToDoTaskDetailViewModel()
     var taskId: String
     @State private var showAlert = false
     @Environment(\.presentationMode) var presentationMode
     @State private var isEditTaskViewPresented = false
-    
+
     var body: some View {
         NavigationView {
             if let task = viewModel.task {
@@ -30,135 +31,140 @@ struct ToDoTaskDetailView: View {
                 title: Text("Delete Task"),
                 message: Text("Are you sure you want to delete this task?"),
                 primaryButton: .destructive(Text("Delete")) {
-                    deleteTask()
+                    Task {
+                        await deleteTask()
+                    }
                 },
                 secondaryButton: .cancel()
             )
         }
         .sheet(isPresented: $isEditTaskViewPresented) {
             if let task = viewModel.task {
-                EditTaskView(task: task) 
+                EditTaskView(task: task)
             }
         }
     }
-    
+
     private func taskDetailView(for task: ToDoTaskModel) -> some View {
-            VStack {
+        VStack {
+            Spacer()
+            HStack {
+                Text("\(task.title)")
+                    .font(.largeTitle)
+                    .foregroundStyle(.indigo)
+                    .padding(.leading, 20)
+                    .fontWeight(.bold)
+
                 Spacer()
-                HStack {
-                    Text("\(task.title)")
-                        .font(.largeTitle)
-                        .foregroundStyle(.indigo)
-                        .padding(.leading, 20)
-                        .fontWeight(.bold)
-                    
-                    Spacer()
-                    
-                    VStack {
-                        
-                        Image("bin")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 30, height: 30)
-                        
-                        Button(action: {
-                            showAlert = true
-                        }) {
-                            Text("Delete Task")
-                                .font(.subheadline)
-                                .foregroundStyle(.indigo)
-                        }
-                        
+
+                VStack {
+                    Image("bin")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 30, height: 30)
+
+                    Button(action: {
+                        showAlert = true
+                    }) {
+                        Text("Delete Task")
+                            .font(.subheadline)
+                            .foregroundStyle(.indigo)
                     }
-                    .padding(.top, 10)
-                    .padding(.trailing, 5)
-                    
-                    VStack {
-                        Image("edit")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 38, height: 38)
-                            
-                        Button(action: {
-                            isEditTaskViewPresented = true
-                        }) {
-                            Text("Edit Task")
-                                .font(.subheadline)
-                                .foregroundStyle(.indigo)
-                        }
-                    }
-                    .padding(.top, 2)
-                    .padding(.trailing, 10)
-                    
                 }
+                .padding(.top, 10)
+                .padding(.trailing, 5)
+
+                VStack {
+                    Image("edit")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 38, height: 38)
+
+                    Button(action: {
+                        isEditTaskViewPresented = true
+                    }) {
+                        Text("Edit Task")
+                            .font(.subheadline)
+                            .foregroundStyle(.indigo)
+                    }
+                }
+                .padding(.top, 2)
                 .padding(.trailing, 10)
-                HStack {
-                    Text("\((task.status.rawValue))")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .background(priorityColour(taskStatus: task.status))
-                    Spacer()
-                }
-                .padding(.leading, 20)
-                Divider()
-                HStack {
-                    Text("Priority:")
-                        .fontWeight(.bold)
-                    Text("\(task.priority)")
-                        .foregroundStyle(.red)
-                    
-                    Spacer()
-                }
-                .padding(.leading, 20)
-                .padding(.bottom, 1)
-                
-                HStack {
-                    Text("Due Date: ")
-                        .fontWeight(.bold)
-                    // add formatting
-                    Text("\((task.dueDate).formatted(date: .abbreviated, time: .omitted))")
-                    Spacer()
-                }
-                .padding(.leading, 20)
-                .padding(.bottom, 1)
-                
-                HStack {
-                    Text("Description")
-                        .fontWeight(.bold)
-                    Text("\(task.description ?? "")")
-                    Spacer()
-                }
-                .padding(.leading, 20)
-                .padding(.bottom, 1)
-                
-                HStack{
-                    Text("Comments:")
-                        .fontWeight(.bold)
-                    Spacer()
-                }
-                .padding(.leading, 20)
-                
-                
-                List {
-                    ForEach(task.comments, id: \.self) { comment in
-                        Text("• \(comment)")
-                    }
-                    
-                }
-                
             }
-            
+            .padding(.trailing, 10)
+            HStack {
+                Text("\(task.status.rawValue)")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .background(priorityColour(taskStatus: task.status))
+                Spacer()
+            }
+            .padding(.leading, 20)
+            Divider()
+            HStack {
+                Text("Priority:")
+                    .fontWeight(.bold)
+                Text("\(task.priority)")
+                    .foregroundStyle(.red)
+
+                Spacer()
+            }
+            .padding(.leading, 20)
+            .padding(.bottom, 1)
+
+            HStack {
+                Text("Due Date: ")
+                    .fontWeight(.bold)
+                // add formatting
+                Text("\((task.dueDate).formatted(date: .abbreviated, time: .omitted))")
+                Spacer()
+            }
+            .padding(.leading, 20)
+            .padding(.bottom, 1)
+
+            HStack {
+                Text("Description")
+                    .fontWeight(.bold)
+                Text("\(task.description ?? "")")
+                Spacer()
+            }
+            .padding(.leading, 20)
+            .padding(.bottom, 1)
+
+            HStack {
+                Text("Comments:")
+                    .fontWeight(.bold)
+                Spacer()
+            }
+            .padding(.leading, 20)
+
+            List {
+                ForEach(task.comments, id: \.self) { comment in
+                    Text("• \(comment)")
+                }
+            }
+        }
     }
-    
-    private func deleteTask() {
+
+    private func deleteTask() async {
         viewModel.deleteTask(taskId: taskId)
+
+        var tasks = authViewModel.currentUser?.tasks ?? []
+
+        if let indexId = tasks.firstIndex(of: taskId) {
+            tasks.remove(at: indexId)
+        }
+
+        await authViewModel.saveUser(
+            user: UserModel(
+                id: authViewModel.userSession?.uid ?? "",
+                fullname: authViewModel.currentUser?.fullname ?? "",
+                email: authViewModel.currentUser?.email ?? "", tasks: tasks
+            ))
         DispatchQueue.main.async {
             presentationMode.wrappedValue.dismiss()
         }
     }
-
-
-
 }
 
 extension Date {
@@ -181,13 +187,13 @@ func priorityColour(taskStatus: TaskStatus) -> Color {
     }
 }
 
-
-    
 struct ToDoTaskDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ToDoTaskDetailView(viewModel: previewViewModel(), taskId: "sampleTaskID").environmentObject(AuthViewModel())
-            .previewLayout(.sizeThatFits)
-            .padding()
+        ToDoTaskDetailView(viewModel: previewViewModel(), taskId: "sampleTaskID").environmentObject(
+            AuthViewModel()
+        )
+        .previewLayout(.sizeThatFits)
+        .padding()
     }
 
     // Helper function to configure the view model with the sample task
@@ -196,12 +202,16 @@ struct ToDoTaskDetailView_Previews: PreviewProvider {
             id: "sampleTaskID",
             title: "Complete SwiftUI View",
             dueDate: Date(), // Use the current date for simplicity
-            description: "Finish the SwiftUI view for the task detail and integrate it with the existing app.",
+            description:
+            "Finish the SwiftUI view for the task detail and integrate it with the existing app.",
             status: .doing,
             priority: 1,
-            comments: ["Review the design specs", "Check integration points", "Discuss UI changes with the team"]
+            comments: [
+                "Review the design specs", "Check integration points", "Discuss UI changes with the team",
+            ],
+            authorId: ""
         )
-        
+
         let viewModel = ToDoTaskDetailViewModel()
         viewModel.task = sampleTask
         return viewModel

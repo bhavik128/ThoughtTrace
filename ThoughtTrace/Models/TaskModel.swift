@@ -22,8 +22,13 @@ struct ToDoTaskModel: Identifiable, Codable {
     var description: String?
     var status: TaskStatus
     var comments: [String]
+    var authorId: String
 
-    init(id: String, title: String, dateCreated: Date = Date(), dueDate: Date, description: String? = nil, status: TaskStatus = .toDo, priority: Int, comments: [String] = []) {
+    init(
+        id: String, title: String, dateCreated: Date = Date(), dueDate: Date,
+        description: String? = nil, status: TaskStatus = .toDo, priority: Int, comments: [String] = [],
+        authorId: String
+    ) {
         self.id = id
         self.title = title
         self.dateCreated = dateCreated
@@ -32,8 +37,8 @@ struct ToDoTaskModel: Identifiable, Codable {
         self.status = status
         self.comments = comments
         self.priority = priority
+        self.authorId = authorId
     }
-    
 }
 
 extension ToDoTaskModel {
@@ -43,4 +48,3 @@ extension ToDoTaskModel {
         return try decoder.decode(ToDoTaskModel.self, from: jsonData)
     }
 }
-

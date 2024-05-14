@@ -12,4 +12,3 @@ struct CustomHeaderView: View {
             .listRowInsets(EdgeInsets()) // Remove default padding
     }
 }
-
